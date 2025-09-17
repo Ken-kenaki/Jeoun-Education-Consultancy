@@ -281,8 +281,8 @@ interface PageProps {
   };
 }
 
-export default function TestPreparationDetailPage({ params }: PageProps) {
-  const test = testPreparations[params.id as TestId];
+export default async function TestPreparationDetailPage({ params }: PageProps) {
+  const test = await testPreparations[params.id as TestId];
 
   if (!test) {
     return (

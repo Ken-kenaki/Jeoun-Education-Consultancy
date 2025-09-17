@@ -1,31 +1,34 @@
-import HeroSection from "@/Components/Hero";
-import CareerChoicesSection from "@/Components/CarrierChoicesSection";
-import WhyUs from "@/Components/WhyUs";
 import React from "react";
-import NewsEventsCarousel from "@/Components/NewsEvents";
+// import HeroSection from "@/Components/Hero";
+// import CareerChoicesSection from "@/Components/CarrierChoicesSection";
+// import WhyUs from "@/Components/WhyUs";
+// import NewsEventsCarousel from "@/Components/NewsEvents";
 import StatsCounter from "@/Components/StatsCounter";
 import UniversitiesCarousel from "@/Components/Universities";
 import StudentSuccessCarousel from "@/Components/StudentSuccess";
-import CountriesCarousel from "@/Components/Countries";
+// import CountriesCarousel from "@/Components/Countries";
 import AboutSection from "@/Components/About";
-import ContactSection from "@/Components/ContactSection";
+// import ContactSection from "@/Components/ContactSection";
 import FindUsSection from "@/Components/FindUs";
+import StudyDestinations from "@/Components/StudyDestinations";
 
 export default async function page() {
   return (
     <main className="overflow-x-hidden">
       <div className="w-full max-w-[100vw]">
-        <HeroSection />
-        <CareerChoicesSection />
+        {/* <HeroSection /> */}
+        {/* <CareerChoicesSection /> */}
+        <StudyDestinations />
         <AboutSection />
-        <WhyUs />
-        <NewsEventsCarousel />
+        {/* <WhyUs /> */}
+        {/* <NewsEventsCarousel /> */}
         <StatsCounter />
         <UniversitiesCarousel />
         <StudentSuccessCarousel />
-        <CountriesCarousel />
-        <ContactSection />
+        {/* <CountriesCarousel /> */}
+        {/* <ContactSection /> */}
         <FindUsSection />
+      
       </div>
     </main>
   );

@@ -8,6 +8,7 @@ interface SessionClient {
   databases: Databases;
   storage: Storage;
 }
+
 interface AdminClient {
   account: Account;
   databases: Databases;
@@ -21,11 +22,10 @@ export async function createSessionClient(): Promise<SessionClient> {
 
   const cookieStore = cookies();
   const session = (await cookieStore).get("my-custom-session");
-  if (!session || !session.value) {
-    throw new Error("No session");
+  
+  if (session?.value) {
+    client.setSession(session.value);
   }
-
-  client.setSession(session.value);
 
   return {
     account: new Account(client),
@@ -38,13 +38,13 @@ export async function createAdminClient(): Promise<AdminClient> {
   const client = new Client()
     .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!)
-    .setKey(process.env.NEXT_APPWRITE_KEY!);
+    .setKey(process.env.NEXT_APPWRITE_API_KEY!); 
 
-    return {
-      account: new Account(client),
-      databases: new Databases(client),
-      storage: new Storage(client),
-    };
+  return {
+    account: new Account(client),
+    databases: new Databases(client),
+    storage: new Storage(client),
+  };
 }
 
 export async function getLoggedInUser() {
@@ -54,4 +54,10 @@ export async function getLoggedInUser() {
   } catch (error) {
     return null;
   }
+}
+
+// Add this function for server actions that need admin privileges
+export async function withAdminClient<T>(operation: (client: AdminClient) => Promise<T>): Promise<T> {
+  const adminClient = await createAdminClient();
+  return operation(adminClient);
 }

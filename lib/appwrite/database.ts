@@ -199,7 +199,7 @@ export class DatabaseService {
     return await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.collections.newsEvents,
-      [Query.limit(limit), Query.offset(offset), Query.orderDesc("createdAt")]
+      // [Query.limit(limit), Query.offset(offset), Query.orderDesc("createdAt")]
     );
   }
 

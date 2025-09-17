@@ -72,80 +72,76 @@ export default function Footer() {
   const destinations: FooterLink[] = [
     { name: "South Korea", url: "/south-korea" },
     { name: "Australia", url: "/australia" },
-    { name: "Japan", url: "/japan" },
     { name: "UK", url: "/uk" },
-    { name: "Malta", url: "/malta" },
   ];
 
   const testPreparations: FooterLink[] = [
     { name: "IELTS Preparation", url: "/test-preparations/ielts" },
-    { name: "PTE Preparation", url: "/test-preparations/pte" },
-    { name: "Japanese Language", url: "/test-preparations/japanese-language" },
     { name: "Korean Language", url: "/test-preparations/korean-language" },
   ];
 
   const contactInfo: ContactInfo[] = [
     {
-      icon: <MapPin className="flex-shrink-0 mt-1 text-[#C73D43]" size={18} />,
+      icon: <MapPin className="flex-shrink-0 mt-1" size={18} />,
       text: "Gurukul Education Foundation, Kathmandu, Nepal",
     },
     {
-      icon: <Phone className="text-[#C73D43]" size={18} />,
+      icon: <Phone size={18} />,
       text: "01-5916232",
       url: "tel:+977015916232",
       isLink: true,
     },
     {
-      icon: <Phone className="text-[#C73D43]" size={18} />,
+      icon: <Phone size={18} />,
       text: "+977-985-1349350",
       url: "tel:+9779851349350",
       isLink: true,
     },
     {
-      icon: <Phone className="text-[#C73D43]" size={18} />,
+      icon: <Phone size={18} />,
       text: "+977-986-7818090",
       url: "tel:+9779867818090",
       isLink: true,
     },
     {
-      icon: <Mail className="text-[#C73D43]" size={18} />,
+      icon: <Mail size={18} />,
       text: "info@gurukuleduc.com",
       url: "mailto:info@gurukuleduc.com",
       isLink: true,
     },
     {
-      icon: <Mail className="text-[#C73D43]" size={18} />,
+      icon: <Mail size={18} />,
       text: "gurukuleducation44@gmail.com",
       url: "mailto:gurukuleducation44@gmail.com",
       isLink: true,
     },
     {
-      icon: <Clock className="text-[#C73D43]" size={18} />,
+      icon: <Clock size={18} />,
       text: "Sun-Fri: 6:00 AM - 6:00 PM",
     },
     {
-      icon: <Clock className="text-[#C73D43]" size={18} />,
+      icon: <Clock size={18} />,
       text: "Saturday: Closed",
     },
   ];
 
   const legalLinks: FooterLink[] = [
-    { name: "Privacy Policy", url: "/" },
-    { name: "Terms of Service", url: "/" },
-    { name: "Sitemap", url: "/" },
+    { name: "Privacy Policy", url: "/privacy-policy" },
+    { name: "Terms of Service", url: "/terms" },
+    { name: "Sitemap", url: "/sitemap" },
   ];
 
   return (
-    <footer className="bg-[#2C3C81] text-[#F5F4F5] pt-12 pb-8 px-4 sm:px-6">
+    <footer className="bg-[#232E2F] text-[#D9F1F1] pt-12 pb-8 px-4 sm:px-6">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Logo and About */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold">
-              <span className="text-[#F5F4F5]">Gurukul Educ</span>
-              <span className="text-[#C73D43]">ation Foundation</span>
+              <span className="text-[#D9F1F1]">Jeon Educa</span>
+              <span className="text-[#D9F1F1] opacity-90">tion Consultancy</span>
             </h2>
-            <p className="text-[#B2ACCE] text-sm sm:text-base">
+            <p className="text-[#D9F1F1] opacity-80 text-sm sm:text-base">
               Transforming dreams into global education realities.
             </p>
             <div className="flex space-x-4 pt-2">
@@ -153,7 +149,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={social.url}
-                  className="text-[#B2ACCE] hover:text-[#C73D43] transition-colors duration-200"
+                  className="text-[#D9F1F1] hover:text-white transition-colors duration-200"
                   aria-label={`Visit our ${social.label}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -166,15 +162,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#F5F4F5]">
+            <h3 className="text-lg font-semibold text-[#D9F1F1]">
               Quick Links
             </h3>
-            <ul className="space-y-2 text-[#B2ACCE]">
+            <ul className="space-y-2 text-[#D9F1F1] opacity-80">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.url}
-                    className="hover:text-[#C73D43] transition-colors duration-200 text-sm sm:text-base"
+                    className="hover:text-white transition-colors duration-200 text-sm sm:text-base"
                   >
                     {link.name}
                   </Link>
@@ -183,36 +179,56 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Study Destinations */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#F5F4F5]">
-              Study Destinations
-            </h3>
-            <ul className="space-y-2 text-[#B2ACCE]">
-              {destinations.map((destination, index) => (
-                <li key={index}>
-                  <Link
-                    href={destination.url}
-                    className="hover:text-[#C73D43] transition-colors duration-200 text-sm sm:text-base"
-                  >
-                    {destination.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Study Destinations & Test Preparations */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-[#D9F1F1]">
+                Study Destinations
+              </h3>
+              <ul className="space-y-2 text-[#D9F1F1] opacity-80">
+                {destinations.map((destination, index) => (
+                  <li key={index}>
+                    <Link
+                      href={destination.url}
+                      className="hover:text-white transition-colors duration-200 text-sm sm:text-base"
+                    >
+                      {destination.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-[#D9F1F1]">
+                Test Preparations
+              </h3>
+              <ul className="space-y-2 text-[#D9F1F1] opacity-80">
+                {testPreparations.map((test, index) => (
+                  <li key={index}>
+                    <Link
+                      href={test.url}
+                      className="hover:text-white transition-colors duration-200 text-sm sm:text-base"
+                    >
+                      {test.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#F5F4F5]">Contact Us</h3>
-            <ul className="space-y-3 text-[#B2ACCE]">
+            <h3 className="text-lg font-semibold text-[#D9F1F1]">Contact Us</h3>
+            <ul className="space-y-3 text-[#D9F1F1] opacity-80">
               {contactInfo.map((info, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span aria-hidden="true">{info.icon}</span>
+                  <span aria-hidden="true" className="mt-0.5">{info.icon}</span>
                   {info.isLink && info.url ? (
                     <Link
                       href={info.url}
-                      className="hover:text-[#C73D43] transition-colors duration-200 text-sm sm:text-base"
+                      className="hover:text-white transition-colors duration-200 text-sm sm:text-base"
                     >
                       {info.text}
                     </Link>
@@ -226,10 +242,10 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[#B2ACCE]/30 my-6 sm:my-8"></div>
+        <div className="border-t border-[#D9F1F1]/30 my-6 sm:my-8"></div>
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-[#B2ACCE] text-xs sm:text-sm">
+        <div className="flex flex-col md:flex-row justify-between items-center text-[#D9F1F1] opacity-80 text-xs sm:text-sm">
           <div className="mb-4 md:mb-0">
             © {new Date().getFullYear()} Gurukul Education. All rights reserved.
           </div>
@@ -238,7 +254,7 @@ export default function Footer() {
               <Link
                 key={index}
                 href={link.url}
-                className="hover:text-[#C73D43] transition-colors duration-200"
+                className="hover:text-white transition-colors duration-200"
               >
                 {link.name}
               </Link>
