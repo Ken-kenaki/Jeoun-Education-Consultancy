@@ -24,44 +24,6 @@ export default function HeroSection(): JSX.Element {
   const floatingCardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const textElementsRef = useRef<(HTMLElement | null)[]>([]);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const [stats, setStats] = useState({
-    students: "10,000+",
-    universities: "50+",
-    countries: "15+",
-  });
-
-  // Fetch stats from API
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const response = await fetch("/api/statistics");
-        if (!response.ok) throw new Error("Failed to fetch statistics");
-        const data = await response.json();
-
-        // Transform the API data
-        const statsData = data.documents.reduce((acc: any, stat: any) => {
-          acc[stat.name] = stat.count;
-          return acc;
-        }, {});
-
-        setStats({
-          students: `${statsData.students || 10000}+`,
-          universities: `${statsData.universities || 50}+`,
-          countries: `${statsData.countries || 15}+`,
-        });
-      } catch (error) {
-        console.error("Error fetching statistics:", error);
-        // Fallback to default values
-        setStats({
-          students: "10,000+",
-          universities: "50+",
-          countries: "15+",
-        });
-      }
-    };
-
-    fetchStats();
-  }, []);
 
   const addToRefs = useCallback(
     (
@@ -84,7 +46,7 @@ export default function HeroSection(): JSX.Element {
 
   useEffect(() => {
     const animateElements = (): void => {
-      // Animate text elements
+      // Animation code remains the same...
       textElementsRef.current.forEach((el, index) => {
         if (el) {
           el.style.opacity = "0";
@@ -97,7 +59,6 @@ export default function HeroSection(): JSX.Element {
         }
       });
 
-      // Animate image container
       if (imageContainerRef.current) {
         imageContainerRef.current.style.opacity = "0";
         imageContainerRef.current.style.transform = "scale(0.9)";
@@ -110,7 +71,6 @@ export default function HeroSection(): JSX.Element {
         }, 400);
       }
 
-      // Animate buttons
       if (buttonsRef.current) {
         const buttons = buttonsRef.current.children;
         Array.from(buttons).forEach((button, index) => {
@@ -125,7 +85,6 @@ export default function HeroSection(): JSX.Element {
         });
       }
 
-      // Animate floating cards
       floatingCardsRef.current.forEach((card, index) => {
         if (card) {
           card.style.opacity = "0";
@@ -148,46 +107,46 @@ export default function HeroSection(): JSX.Element {
   }, []);
 
   const statsData: StatData[] = [
-    { value: stats.students, label: "Students" },
-    { value: stats.universities, label: "Universities" },
-    { value: stats.countries, label: "Countries" },
+    { value: "Exceptional", label: "Visa Success" },
+    { value: "Worldwide", label: "University Network" },
+    { value: "Proven", label: "Success Stories" },
   ];
 
   const floatingCardsData: FloatingCard[] = [
     {
       position: "top-4 right-0",
-      bg: "bg-[#2C3C81]",
-      text: "text-[#F5F4F5]",
-      title: "IELTS/PTE",
-      value: "Expert Prep",
+      bg: "bg-[#35B354]",
+      text: "text-white",
+      title: "Expert",
+      value: "Counseling",
     },
     {
       position: "top-1/2 left-0",
-      bg: "bg-[#C73D43]",
-      text: "text-[#F5F4F5]",
-      title: "Scholarships",
-      value: "$2M+ Secured",
+      bg: "bg-white",
+      text: "text-[#35B354]",
+      title: "Personalized",
+      value: "Guidance",
     },
     {
       position: "bottom-1/3 right-0",
-      bg: "bg-[#B2ACCE]",
-      text: "text-[#2C3C81]",
-      title: "Visa Success",
-      value: "98% Rate",
+      bg: "bg-[#35B354]",
+      text: "text-white",
+      title: "Comprehensive",
+      value: "Visa Support",
     },
     {
       position: "bottom-4 left-0",
-      bg: "bg-[#2C3C81]",
-      text: "text-[#F5F4F5]",
-      title: "Since",
-      value: "2020",
+      bg: "bg-white",
+      text: "text-[#35B354]",
+      title: "Trusted",
+      value: "Since 2010",
     },
   ];
 
   return (
     <div
       ref={heroRef}
-      className="bg-[#F5F4F5] min-h-screen lg:pt-50 pt-24 pb-8 md:pb-16 overflow-hidden"
+      className="bg-white min-h-screen lg:pt-50 pt-35 pb-8 md:pb-16 overflow-hidden"
     >
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -196,82 +155,81 @@ export default function HeroSection(): JSX.Element {
             <div className="space-y-4 md:space-y-6">
               <div
                 ref={addToRefs(textElementsRef, 0)}
-                className="inline-block bg-[#B2ACCE]/30 text-[#2C3C81] px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium"
+                className="inline-block bg-[#35B354]/20 text-[#35B354] px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium"
               >
-                Trusted by {stats.students} Students Worldwide
+                Trusted Education Partner for Students Worldwide
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 <span
                   ref={addToRefs(textElementsRef, 1)}
-                  className="text-[#2C3C81] block"
+                  className="text-gray-800 block"
                 >
-                  Your Gateway to{" "}
+                  Empowering Your{" "}
                 </span>
                 <span
                   ref={addToRefs(textElementsRef, 2)}
-                  className="text-[#C73D43] block"
+                  className="text-[#35B354] block"
                 >
-                  Global
+                  Global Education
                 </span>
                 <span
                   ref={addToRefs(textElementsRef, 3)}
-                  className="text-[#C73D43] block"
+                  className="text-gray-800 block"
                 >
-                  Education{" "}
+                  Journey with{" "}
                 </span>
                 <span
                   ref={addToRefs(textElementsRef, 4)}
-                  className="text-[#2C3C81] block"
+                  className="text-[#35B354] block"
                 >
-                  Excellence
+                  Nextgen Advisors
                 </span>
               </h1>
 
               <p
                 ref={addToRefs(textElementsRef, 5)}
-                className="text-[#2C3C81]/80 text-base md:text-lg max-w-lg leading-relaxed"
+                className="text-gray-600 text-base md:text-lg max-w-lg leading-relaxed"
               >
-                At Gurukul Education Foundation, we transform dreams into
-                reality. Expert guidance, comprehensive test prep, and
-                personalized support for your international education journey.
+                Premier educational consultancy providing end-to-end guidance
+                for studying abroad. Our expert counseling and personalized
+                support connects you with top international universities to help
+                you achieve your academic dreams.
               </p>
             </div>
 
             <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="tel:01-5916232"
-                className="group flex items-center justify-center space-x-2 bg-[#C73D43] text-[#F5F4F5] px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-[#2C3C81] hover:shadow-lg transition-all duration-300 shadow-md"
-                aria-label="Call us to start your education journey"
-              >
-                <span>START YOUR JOURNEY</span>
-                <ArrowRight className="w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-
               <Link
-                href="/contact"
-                className="group flex items-center justify-center space-x-2 bg-transparent border-2 border-[#2C3C81] text-[#2C3C81] px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-[#2C3C81] hover:text-[#F5F4F5] hover:shadow-lg transition-all duration-300"
-                aria-label="Go to contact page for free consultation"
+                href="/apply-online"
+                className="group flex items-center justify-center space-x-2 bg-[#35B354] text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-[#2a8e43] hover:shadow-lg transition-all duration-300 shadow-md"
+              >
+                <span>BEGIN YOUR APPLICATION</span>
+                <ArrowRight className="w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <a
+                href="tel:015413555"
+                className="group flex items-center justify-center space-x-2 bg-transparent border-2 border-[#35B354] text-[#35B354] px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-[#35B354] hover:text-white hover:shadow-lg transition-all duration-300"
               >
                 <span>📞</span>
                 <span className="text-sm md:text-base">
-                  BOOK FREE CONSULTATION
+                  SPEAK WITH AN EXPERT
                 </span>
-              </Link>
+              </a>
             </div>
 
             {/* Success Stats */}
-            <div className="grid grid-cols-3 gap-4 md:gap-6 pt-6 md:pt-8 border-t border-[#B2ACCE]/30">
+            <div className="grid grid-cols-3 gap-4 md:gap-6 pt-6 md:pt-8 border-t border-gray-200">
               {statsData.map((stat, index) => (
                 <div
                   key={`stat-${index}`}
                   ref={addToRefs(textElementsRef, 6 + index)}
                   className="text-center"
                 >
-                  <div className="text-xl md:text-2xl font-bold text-[#C73D43]">
+                  <div className="text-xl md:text-2xl font-bold text-[#35B354]">
                     {stat.value}
                   </div>
-                  <div className="text-xs md:text-sm text-[#2C3C81]/70">
+                  <div className="text-xs md:text-sm text-gray-600">
                     {stat.label}
                   </div>
                 </div>
@@ -288,7 +246,7 @@ export default function HeroSection(): JSX.Element {
               {/* Hero Image */}
               <Image
                 src="/girl.png"
-                alt="Students studying abroad - Gurukul Education Foundation"
+                alt="Students studying abroad - Nextgen Advisors"
                 fill
                 className="object-contain"
                 priority
