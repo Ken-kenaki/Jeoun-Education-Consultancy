@@ -327,9 +327,8 @@ export default function StudyInAustralia() {
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border-4 border-[#D9F1F1]">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/Video/australia.mp4"
+            src="/australia.mp4"
             title="Australian University Experience"
-            controls
             loop
             muted
             playsInline

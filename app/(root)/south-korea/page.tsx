@@ -130,7 +130,7 @@ export default function StudyInSouthKorea() {
       <div className="relative bg-[#232E2F]">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/south-korea-hero.jpg"
+            src="/south-korea.jpg"
             alt="South Korea University Campus"
             fill
             className="object-cover opacity-40"
@@ -324,9 +324,8 @@ export default function StudyInSouthKorea() {
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border-4 border-[#D9F1F1]">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/Video/south-korea.mp4"
+            src="/korea.mp4"
             title="South Korea University Experience"
-            controls
             loop
             muted
             playsInline

@@ -324,9 +324,8 @@ export default function StudyInUK() {
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border-4 border-[#D9F1F1]">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/Video/uk.mp4"
+            src="/uk.mp4"
             title="UK University Experience"
-            controls
             loop
             muted
             playsInline
