@@ -110,7 +110,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-[#232E2F]/80">
                   <p className="text-lg">
-                    Established in 2018, Joeun Education Consultancy was founded with a clear vision: 
+                    Established for you to study abroad, Joeun Education Consultancy was founded with a clear vision: 
                     to provide exceptional guidance and support to students aspiring to study abroad. 
                     Our name "Joeun" reflects our commitment to goodness and excellence in education consulting.
                   </p>
@@ -135,7 +135,7 @@ export default function AboutPage() {
                 <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
                   <Image
                     fill
-                    src="/consulting-office.jpg"
+                    src="/about.jpg"
                     alt="Education consulting office"
                     className="w-full h-full object-cover"
                   />
@@ -146,59 +146,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Timeline */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="py-16 px-4 bg-[#D9F1F1]"
-        >
-          <div className="container mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#232E2F] text-center mb-12">
-              Our Journey
-            </h2>
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[#232E2F]/30"></div>
-              <div className="space-y-12">
-                {milestones.map((milestone, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className={`flex items-center ${
-                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                    }`}
-                  >
-                    <div
-                      className={`w-1/2 ${
-                        index % 2 === 0 ? "pr-8 text-right" : "pl-8"
-                      }`}
-                    >
-                      <div className="bg-white rounded-xl p-6 shadow-lg">
-                        <div className="text-2xl font-bold text-[#232E2F] mb-2">
-                          {milestone.year}
-                        </div>
-                        <h3 className="text-xl font-bold text-[#232E2F] mb-2">
-                          {milestone.title}
-                        </h3>
-                        <p className="text-[#232E2F]/80">
-                          {milestone.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="relative z-10">
-                      <div className="w-4 h-4 bg-[#232E2F] rounded-full border-4 border-white shadow-lg"></div>
-                    </div>
-                    <div className="w-1/2"></div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.section>
+      
 
         {/* Values */}
         <motion.section

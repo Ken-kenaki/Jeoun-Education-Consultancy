@@ -7,7 +7,7 @@ const page = () => {
     <>
       {" "}
       <AboutPage />
-      <WhyUs />
+      {/* <WhyUs /> */}
     </>
   );
 };

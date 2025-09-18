@@ -51,8 +51,8 @@ export default function WhyUs() {
     {
       title: "Decades of Expertise",
       description:
-        "With over 5 years in international education, our counselors have successfully guided thousands of students to their dream universities worldwide.",
-      image: "/why-us-1.jpeg",
+        "With over  in international education, our counselors have successfully guided thousands of students to their dream universities worldwide.",
+      image: "/why-us-1.jpg",
       imagePosition: "left",
       buttonText: "MEET OUR TEAM",
       buttonLink: "/about/#team", 
@@ -64,7 +64,7 @@ export default function WhyUs() {
       image: "/why-us-2.jpeg",
       imagePosition: "right",
       buttonText: "SEE SUCCESS STORIES",
-      buttonLink: "/#stories", // Updated link to #stories anchor
+      buttonLink: "/success-stories",
     },
     {
       title: "End-to-End Support",
@@ -73,7 +73,7 @@ export default function WhyUs() {
       image: "/why-us-3.jpeg",
       imagePosition: "left",
       buttonText: "VIEW OUR SERVICES",
-      buttonLink: "/services", // Updated link to /services route
+      buttonLink: "/services",
     },
   ];
 
