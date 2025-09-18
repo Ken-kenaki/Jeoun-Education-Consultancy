@@ -9,34 +9,7 @@ interface BlogPost {
 }
 
 const blogPosts: BlogPost[] = [
-  {
-    id: "why-choose-gurukul",
-    title: "Why Choose Gurukul for Your Studies?",
-    description:
-      "Discover the benefits of studying with Gurukul Education Foundation",
-    date: "May 15, 2025",
-  },
-  {
-    id: "apply-for-march-intake",
-    title: "How to Apply for March Intake",
-    description:
-      "Step-by-step guide to applying for the March intake at Gurukul",
-    date: "July 29, 2025",
-  },
-  {
-    id: "study-in-japan-april-2026",
-    title: "How to Study in Japan - April 2025",
-    description:
-      "Comprehensive guide for students planning to study in Japan in April 2025",
-    date: "August 15, 2025",
-  },
-  {
-    id: "study-in-south-korea-march-intake-2026",
-    title: "How to Study in South Korea - March 2026",
-    description:
-      "Comprehensive guide for students planning to study in South Korea in March 2026",
-    date: "August 29, 2025",
-  },
+
 ];
 
 export default function BlogPage() {
