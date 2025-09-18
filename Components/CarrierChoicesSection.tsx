@@ -1,32 +1,74 @@
 "use client";
 
-import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 
-interface CareerOption {
+interface CareerCard {
   title: string;
   description: string;
   icon: React.ReactNode;
   countries: string[];
+  size: "small" | "medium" | "large";
+  color: string;
+  tiltDirection: "left" | "right" | "up" | "down";
 }
 
 export default function CareerChoicesSection() {
-  const swiperRef = useRef<SwiperType | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const careerOptions: CareerOption[] = [
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIsMobile();
+    
+    // Add event listener for resize
+    window.addEventListener('resize', checkIsMobile);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    // Disable tilt effect on mobile
+    if (isMobile) return;
+    
+    const card = cardRefs.current[index];
+    if (!card) return;
+    
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateY = ((x - centerX) / centerX) * 5;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const card = cardRefs.current[index];
+    if (card) {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    }
+  };
+
+  const careerOptions: CareerCard[] = [
     {
-      title: "Engineering & Technology",
+      title: "Study in South Korea",
       description:
-        "Pursue degrees in Computer Science, Mechanical, Electrical, and more at top global universities.",
+        "Top-ranked universities with cutting-edge programs in technology, engineering, and design. Scholarships available for international students.",
       icon: (
         <svg
-          className="w-8 h-8 text-[#2C3C81]"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -40,15 +82,18 @@ export default function CareerChoicesSection() {
           />
         </svg>
       ),
-      countries: ["USA", "South Korea", "UK", "Japan"],
+      countries: ["Seoul National", "KAIST", "POSTECH", "Yonsei"],
+      size: "medium",
+      color: "bg-[#D9F1F1]",
+      tiltDirection: "right"
     },
     {
-      title: "Business & Management",
+      title: "UK Universities",
       description:
-        "MBA and business degrees from world-renowned business schools and universities.",
+        "World-renowned institutions with centuries of academic excellence and strong industry connections.",
       icon: (
         <svg
-          className="w-8 h-8 text-[#2C3C81]"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -62,15 +107,18 @@ export default function CareerChoicesSection() {
           />
         </svg>
       ),
-      countries: ["UK", "USA", "Japan", "Australia"],
+      countries: ["Oxford", "Cambridge", "Imperial", "UCL"],
+      size: "medium",
+      color: "bg-white",
+      tiltDirection: "left"
     },
     {
-      title: "Medicine & Healthcare",
+      title: "Australian Education",
       description:
-        "Study medicine, nursing, or public health at prestigious medical institutions worldwide.",
+        "High-quality education system with post-study work opportunities in a vibrant multicultural environment.",
       icon: (
         <svg
-          className="w-8 h-8 text-[#2C3C81]"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -84,15 +132,18 @@ export default function CareerChoicesSection() {
           />
         </svg>
       ),
-      countries: ["USA", "UK", "Australia", "South Korea"],
+      countries: ["Melbourne", "Sydney", "ANU", "Monash"],
+      size: "medium",
+      color: "bg-white",
+      tiltDirection: "up"
     },
     {
-      title: "Computer Science & AI",
+      title: "Engineering Programs",
       description:
-        "Cutting-edge programs in artificial intelligence, data science, and software engineering.",
+        "World-class engineering degrees with practical experience and global recognition.",
       icon: (
         <svg
-          className="w-8 h-8 text-[#2C3C81]"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -106,95 +157,221 @@ export default function CareerChoicesSection() {
           />
         </svg>
       ),
-      countries: ["USA", "UK", "USA", "Malta"],
+      countries: ["Mechanical", "Electrical", "Software", "Civil"],
+      size: "small",
+      color: "bg-[#D9F1F1]",
+      tiltDirection: "down"
+    },
+    {
+      title: "Business Degrees",
+      description:
+        "Accelerate your career with internationally recognized business and management programs.",
+      icon: (
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+      countries: ["MBA", "Finance", "Marketing", "Management"],
+      size: "small",
+      color: "bg-[#D9F1F1]",
+      tiltDirection: "up"
     },
   ];
 
   return (
-    <section className="bg-gradient-to-br from-[#F5F4F5] via-[#B2ACCE]/20 to-[#F5F4F5] py-16 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2C3C81] mb-4">
-            Find What&apos;s Right For You
+    <section className="bg-[#D9F1F1] py-12 md:py-16 px-4 md:px-6">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#232E2F] mb-4">
+            Global Education Opportunities
           </h2>
-          <p className="text-[#2C3C81]/80 max-w-2xl mx-auto text-lg">
-            Explore diverse career paths and find the perfect program to match
-            your aspirations.
+          <p className="text-[#232E2F]/80 max-w-2xl mx-auto text-base md:text-lg">
+            Discover premier academic programs across South Korea, Australia, 
+            and the United Kingdom tailored to your career aspirations.
           </p>
         </div>
 
-        <div className="relative">
-          <Swiper
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            modules={[Navigation, Pagination]}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-            }}
-            pagination={{
-              clickable: true,
-              el: ".swiper-pagination",
-              type: "bullets",
-            }}
-            className="pb-12"
+        <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-5 mb-8 md:mb-12">
+          {/* For mobile: all cards stack vertically */}
+          {/* For desktop: first row with 3 medium cards */}
+          
+          {/* Study in South Korea Card */}
+          <div
+            ref={el => cardRefs.current[0] = el}
+            className="md:col-span-2 bg-[#D9F1F1] rounded-2xl p-5 md:p-6 border border-[#232E2F]/10 shadow-sm transition-all duration-500 ease-out flex flex-col"
+            onMouseMove={(e) => handleMouseMove(e, 0)}
+            onMouseLeave={() => handleMouseLeave(0)}
           >
-            {careerOptions.map((career, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full border border-[#B2ACCE]/30 hover:shadow-xl transition-shadow duration-300">
-                  <div className="p-6 md:p-8 h-full flex flex-col">
-                    <div className="mb-4">{career.icon}</div>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#2C3C81] mb-3">
-                      {career.title}
-                    </h3>
-                    <p className="text-[#2C3C81]/80 mb-5 flex-grow">
-                      {career.description}
-                    </p>
-                    <div className="mt-auto">
-                      <div className="text-sm font-medium text-[#2C3C81] mb-2">
-                        Popular Destinations:
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {career.countries.map((country, i) => (
-                          <span
-                            key={i}
-                            className="bg-[#B2ACCE]/20 text-[#2C3C81] px-3 py-1 rounded-full text-xs"
-                          >
-                            {country}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <div className="text-[#232E2F] mb-3 md:mb-4">{careerOptions[0].icon}</div>
+            <h3 className="text-lg md:text-xl font-bold text-[#232E2F] mb-2 md:mb-3">
+              {careerOptions[0].title}
+            </h3>
+            <p className="text-[#232E2F]/80 mb-4 md:mb-5 flex-grow text-sm md:text-base">
+              {careerOptions[0].description}
+            </p>
+            <div className="mt-auto">
+              <div className="text-sm font-medium text-[#232E2F] mb-2">
+                Top Universities:
+              </div>
+              <div className="flex flex-wrap gap-1 md:gap-2">
+                {careerOptions[0].countries.map((country, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#232E2F]/10 text-[#232E2F] px-2 md:px-3 py-1 rounded-full text-xs"
+                  >
+                    {country}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
 
-          {/* Custom Pagination */}
-          <div className="swiper-pagination !relative !bottom-0 mt-8 flex justify-center gap-2" />
+          {/* UK Universities Card */}
+          <div
+            ref={el => cardRefs.current[1] = el}
+            className="md:col-span-2 bg-white rounded-2xl p-5 md:p-6 border border-[#232E2F]/10 shadow-sm transition-all duration-500 ease-out flex flex-col"
+            onMouseMove={(e) => handleMouseMove(e, 1)}
+            onMouseLeave={() => handleMouseLeave(1)}
+          >
+            <div className="text-[#232E2F] mb-3 md:mb-4">{careerOptions[1].icon}</div>
+            <h3 className="text-lg md:text-xl font-bold text-[#232E2F] mb-2 md:mb-3">
+              {careerOptions[1].title}
+            </h3>
+            <p className="text-[#232E2F]/80 mb-4 md:mb-5 flex-grow text-sm md:text-base">
+              {careerOptions[1].description}
+            </p>
+            <div className="mt-auto">
+              <div className="text-sm font-medium text-[#232E2F] mb-2">
+                Top Universities:
+              </div>
+              <div className="flex flex-wrap gap-1 md:gap-2">
+                {careerOptions[1].countries.map((country, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#232E2F]/10 text-[#232E2F] px-2 md:px-3 py-1 rounded-full text-xs"
+                  >
+                    {country}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Australian Education Card */}
+          <div
+            ref={el => cardRefs.current[2] = el}
+            className="md:col-span-2 bg-white rounded-2xl p-5 md:p-6 border border-[#232E2F]/10 shadow-sm transition-all duration-500 ease-out flex flex-col"
+            onMouseMove={(e) => handleMouseMove(e, 2)}
+            onMouseLeave={() => handleMouseLeave(2)}
+          >
+            <div className="text-[#232E2F] mb-3 md:mb-4">{careerOptions[2].icon}</div>
+            <h3 className="text-lg md:text-xl font-bold text-[#232E2F] mb-2 md:mb-3">
+              {careerOptions[2].title}
+            </h3>
+            <p className="text-[#232E2F]/80 mb-4 md:mb-5 flex-grow text-sm md:text-base">
+              {careerOptions[2].description}
+            </p>
+            <div className="mt-auto">
+              <div className="text-sm font-medium text-[#232E2F] mb-2">
+                Top Universities:
+              </div>
+              <div className="flex flex-wrap gap-1 md:gap-2">
+                {careerOptions[2].countries.map((country, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#232E2F]/10 text-[#232E2F] px-2 md:px-3 py-1 rounded-full text-xs"
+                  >
+                    {country}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Engineering Programs Card */}
+          <div
+            ref={el => cardRefs.current[3] = el}
+            className="md:col-span-3 bg-[#D9F1F1] rounded-2xl p-5 md:p-6 border border-[#232E2F]/10 shadow-sm transition-all duration-500 ease-out flex flex-col"
+            onMouseMove={(e) => handleMouseMove(e, 3)}
+            onMouseLeave={() => handleMouseLeave(3)}
+          >
+            <div className="text-[#232E2F] mb-3 md:mb-4">{careerOptions[3].icon}</div>
+            <h3 className="text-lg md:text-xl font-bold text-[#232E2F] mb-2 md:mb-3">
+              {careerOptions[3].title}
+            </h3>
+            <p className="text-[#232E2F]/80 mb-4 md:mb-5 flex-grow text-sm md:text-base">
+              {careerOptions[3].description}
+            </p>
+            <div className="mt-auto">
+              <div className="text-sm font-medium text-[#232E2F] mb-2">
+                Popular Specializations:
+              </div>
+              <div className="flex flex-wrap gap-1 md:gap-2">
+                {careerOptions[3].countries.map((country, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#232E2F]/10 text-[#232E2F] px-2 md:px-3 py-1 rounded-full text-xs"
+                  >
+                    {country}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Business Degrees Card */}
+          <div
+            ref={el => cardRefs.current[4] = el}
+            className="md:col-span-3 bg-[#D9F1F1] rounded-2xl p-5 md:p-6 border border-[#232E2F]/10 shadow-sm transition-all duration-500 ease-out flex flex-col"
+            onMouseMove={(e) => handleMouseMove(e, 4)}
+            onMouseLeave={() => handleMouseLeave(4)}
+          >
+            <div className="text-[#232E2F] mb-3 md:mb-4">{careerOptions[4].icon}</div>
+            <h3 className="text-lg md:text-xl font-bold text-[#232E2F] mb-2 md:mb-3">
+              {careerOptions[4].title}
+            </h3>
+            <p className="text-[#232E2F]/80 mb-4 md:mb-5 flex-grow text-sm md:text-base">
+              {careerOptions[4].description}
+            </p>
+            <div className="mt-auto">
+              <div className="text-sm font-medium text-[#232E2F] mb-2">
+                Popular Programs:
+              </div>
+              <div className="flex flex-wrap gap-1 md:gap-2">
+                {careerOptions[4].countries.map((country, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#232E2F]/10 text-[#232E2F] px-2 md:px-3 py-1 rounded-full text-xs"
+                  >
+                    {country}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center">
           <button
             type="button"
-            className="group flex items-center justify-center space-x-2 bg-[#C73D43] text-[#F5F4F5] px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-[#2C3C81] hover:shadow-lg hover:scale-105 transition-all duration-300 shadow-md mx-auto"
+            className="group flex items-center justify-center space-x-2 bg-[#232E2F] text-[#D9F1F1] px-5 md:px-8 py-3 md:py-4 rounded-xl font-semibold hover:bg-[#2C4E4F] hover:shadow-lg transition-all duration-300 shadow-md mx-auto text-sm md:text-base"
           >
-            <Link href="/services">
-              <span>EXPLORE ALL CAREER OPTIONS</span>
+            <Link href="/universities">
+              <span>EXPLORE ALL Universities</span>
             </Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:translate-x-1 transition-transform"
+              className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform"
               viewBox="0 0 20 20"
               fill="currentColor"
             >

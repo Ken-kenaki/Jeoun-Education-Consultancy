@@ -7,28 +7,16 @@ export default function FindUsSection() {
   const locations = [
     {
       title: "Head Office",
-      address: "Kathmandu, Nepal",
+      address: "Boudhanath, Nepal",
       phone: "+977-9851349350 | 9867818090",
-      email: "info@gurukuleducation.com",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.6707076!2d85.3172748!3d27.6707076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1941bacddfcb%3A0xed80795fa96d3b64!2sGurukul%20Education%20Foundation!5e0!3m2!1sen!2snp!4v1703123456789!5m2!1sen!2snp",
+      email: "info@joeuneducationconsultancy.com",
+      mapUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d447.9486445908085!2d85.36822845152528!3d27.721410799615477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bc5adf8f38d%3A0xd1a3513b9536ef5c!2sP9C9%2BGCF%2C%20Boudha%20Rd%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1758158304165!5m2!1sen!2snp",
       directionsUrl: "https://maps.app.goo.gl/F75KkKfeBtfWQgYi6",
       hours: {
         weekdays: "Sunday - Friday: 6:00 AM - 6:00 PM",
         saturday: "Saturday: 10:00 AM - 4:00 PM",
-        sunday: "Saturday: Closed",
-      },
-    },
-    {
-      title: "Branch Office",
-      address: "Kawasoti, Nawalparasi (Opposite to NIC ASIA BANK)",
-      phone: "+977-78590835 | 977-9867977269",
-      email: "@gmail.com",
-     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.2345678!2d84.122468!3d27.6433376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994510041dc520d%3A0xd29c79edec40431b!2sGurukul%20Education%20Foundation%20Kawasoti!5e0!3m2!1sen!2snp!4vYOUR_TIMESTAMP_HERE!5m2!1sen!2snp",
-      directionsUrl: "https://maps.app.goo.gl/XQjtF3TWCVU5pUbS7?g_st=aw",
-      hours: {
-        weekdays: "Sunday - Friday: 6:00 AM - 5:00 PM",
-        saturday: "Saturday: 10:00 AM - 3:00 PM",
-        sunday: "Saturday: Closed",
+        sunday: "Closed",
       },
     },
   ];
@@ -46,11 +34,11 @@ export default function FindUsSection() {
         >
           <h2
             id="find-us-heading"
-            className="text-3xl md:text-4xl font-bold text-[#2C3C81] mb-4"
+            className="text-3xl md:text-4xl font-bold text-[#232E2F] mb-4"
           >
             Find Us
           </h2>
-          <p className="text-lg text-[#2C3C81]/80 max-w-2xl mx-auto">
+          <p className="text-lg text-[#232E2F]/80 max-w-2xl mx-auto">
             Visit our offices for personalized consultation and guidance on your
             study abroad journey.
           </p>
@@ -77,7 +65,7 @@ export default function FindUsSection() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full h-full"
-                  title={`Google Maps location of Gurukul Education Foundation ${location.title}`}
+                  title={`Google Maps location of ${location.title}`}
                 />
               </motion.div>
 
@@ -90,10 +78,11 @@ export default function FindUsSection() {
                 className="space-y-8"
               >
                 <div>
-                  <h3 className="text-2xl font-bold text-[#2C3C81] mb-6">
+                  <h3 className="text-2xl font-bold text-[#232E2F] mb-6">
                     {location.title}
                   </h3>
                   <div className="space-y-6">
+                    {/* Address */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -101,24 +90,25 @@ export default function FindUsSection() {
                       viewport={{ once: true }}
                       className="flex items-start space-x-4"
                     >
-                      <div className="bg-[#C73D43] rounded-full p-3 flex-shrink-0">
+                      <div className="bg-[#D9F1F1] rounded-full p-3 flex-shrink-0">
                         <MapPin
-                          className="w-5 h-5 text-white"
+                          className="w-5 h-5 text-[#232E2F]"
                           aria-hidden="true"
                         />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-[#2C3C81] mb-1">
+                        <h4 className="font-semibold text-[#232E2F] mb-1">
                           Address
                         </h4>
-                        <address className="text-[#2C3C81]/80 not-italic">
-                          Gurukul Education Foundation
+                        <address className="text-[#232E2F]/80 not-italic">
+                          Joeun Education Consultancy
                           <br />
                           {location.address}
                         </address>
                       </div>
                     </motion.div>
 
+                    {/* Phone */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -126,19 +116,19 @@ export default function FindUsSection() {
                       viewport={{ once: true }}
                       className="flex items-start space-x-4"
                     >
-                      <div className="bg-[#C73D43] rounded-full p-3 flex-shrink-0">
+                      <div className="bg-[#D9F1F1] rounded-full p-3 flex-shrink-0">
                         <Phone
-                          className="w-5 h-5 text-white"
+                          className="w-5 h-5 text-[#232E2F]"
                           aria-hidden="true"
                         />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-[#2C3C81] mb-1">
+                        <h4 className="font-semibold text-[#232E2F] mb-1">
                           Phone
                         </h4>
                         <a
                           href={`tel:${location.phone.replace(/\D/g, "")}`}
-                          className="text-[#2C3C81]/80 hover:text-[#C73D43] transition-colors"
+                          className="text-[#232E2F]/80 hover:text-[#232E2F] font-medium transition-colors"
                           aria-label={`Call ${location.title} at ${location.phone}`}
                         >
                           {location.phone}
@@ -146,6 +136,7 @@ export default function FindUsSection() {
                       </div>
                     </motion.div>
 
+                    {/* Email */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -153,19 +144,19 @@ export default function FindUsSection() {
                       viewport={{ once: true }}
                       className="flex items-start space-x-4"
                     >
-                      <div className="bg-[#C73D43] rounded-full p-3 flex-shrink-0">
+                      <div className="bg-[#D9F1F1] rounded-full p-3 flex-shrink-0">
                         <Mail
-                          className="w-5 h-5 text-white"
+                          className="w-5 h-5 text-[#232E2F]"
                           aria-hidden="true"
                         />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-[#2C3C81] mb-1">
+                        <h4 className="font-semibold text-[#232E2F] mb-1">
                           Email
                         </h4>
                         <a
                           href={`mailto:${location.email}`}
-                          className="text-[#2C3C81]/80 hover:text-[#C73D43] transition-colors"
+                          className="text-[#232E2F]/80 hover:text-[#232E2F] font-medium transition-colors"
                           aria-label={`Email ${location.title} at ${location.email}`}
                         >
                           {location.email}
@@ -173,6 +164,7 @@ export default function FindUsSection() {
                       </div>
                     </motion.div>
 
+                    {/* Office Hours */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -180,17 +172,17 @@ export default function FindUsSection() {
                       viewport={{ once: true }}
                       className="flex items-start space-x-4"
                     >
-                      <div className="bg-[#C73D43] rounded-full p-3 flex-shrink-0">
+                      <div className="bg-[#D9F1F1] rounded-full p-3 flex-shrink-0">
                         <Clock
-                          className="w-5 h-5 text-white"
+                          className="w-5 h-5 text-[#232E2F]"
                           aria-hidden="true"
                         />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-[#2C3C81] mb-1">
+                        <h4 className="font-semibold text-[#232E2F] mb-1">
                           Office Hours
                         </h4>
-                        <div className="text-[#2C3C81]/80">
+                        <div className="text-[#232E2F]/80">
                           <p>{location.hours.weekdays}</p>
                           <p>{location.hours.saturday}</p>
                           <p>{location.hours.sunday}</p>
@@ -206,12 +198,12 @@ export default function FindUsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                   viewport={{ once: true }}
-                  className="bg-[#F5F4F5] rounded-xl p-6"
+                  className="bg-[#D9F1F1] rounded-xl p-6"
                 >
-                  <h4 className="text-lg font-bold text-[#2C3C81] mb-3">
+                  <h4 className="text-lg font-bold text-[#232E2F] mb-3">
                     Getting Here
                   </h4>
-                  <p className="text-[#2C3C81]/80 mb-4">
+                  <p className="text-[#232E2F]/80 mb-4">
                     Our {location.title.toLowerCase()} is conveniently located
                     and easily accessible by public transportation and private
                     vehicles.
@@ -222,7 +214,7 @@ export default function FindUsSection() {
                     href={location.directionsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center bg-[#C73D43] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors"
+                    className="inline-flex items-center bg-[#232E2F] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1a2020] transition-colors"
                     aria-label={`Get directions to ${location.title} on Google Maps`}
                   >
                     <MapPin className="w-4 h-4 mr-2" aria-hidden="true" />

@@ -82,15 +82,6 @@ export default function Navbar() {
     },
   ];
 
-  const services: Service[] = [
-    { name: "Study Abroad Consultation", route: "/services", icon: "🎓" },
-    { name: "Visa Assistance", route: "/services", icon: "📋" },
-    { name: "Scholarship Guidance", route: "/services", icon: "💰" },
-    { name: "Test Preparations", route: "/services", icon: "📚" },
-    { name: "Pre-Departure Briefing", route: "/services", icon: "✈️" },
-    { name: "Post-Arrival Support", route: "/services", icon: "🤝" },
-  ];
-
   // Fetch news events from API
   useEffect(() => {
     const fetchNewsEvents = async () => {
@@ -320,10 +311,10 @@ export default function Navbar() {
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="bg-white shadow-lg fixed lg:top-[40px] top-0 z-40 w-full"
+        className="bg-[#D9F1F1] shadow-lg fixed lg:top-[40px] top-0 z-40 w-full"
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-3">
+          <div className="flex justify-between items-center py-1">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -336,11 +327,11 @@ export default function Navbar() {
                 aria-label="Home"
               >
                 <Image
-                  alt="Gurukul education"
-                  width={82}
-                  height={82}
+                  alt="Joeun Education Consultancy"
+                  width={102}
+                  height={102}
                   className="w-16 md:w-20 lg:w-[82px]"
-                  src="/logo.png"
+                  src="/logo2.png"
                 />
               </Link>
             </motion.div>
@@ -359,7 +350,7 @@ export default function Navbar() {
                   aria-label="Study destinations"
                 >
                   <Link href="/countries" className="whitespace-nowrap">
-                    STUDY DESTINATIONS
+                    ABROAD DESTINATIONS
                   </Link>
                   <motion.div
                     animate={{
@@ -394,12 +385,12 @@ export default function Navbar() {
                               aria-label={`Study in ${destination.name}`}
                             >
                               <span className="flex flex-col items-center gap-4">
-                              <span
-                                className={`flag-icon flag-icon-${destination.countryCode} text-7xl`}
-                              ></span>
-                              <span className="text-lg font-[600] text-gray-700 group-hover:text-[#232E2F]">
-                                {destination.name}
-                              </span>
+                                <span
+                                  className={`flag-icon flag-icon-${destination.countryCode} text-7xl`}
+                                ></span>
+                                <span className="text-lg font-[600] text-gray-700 group-hover:text-[#232E2F]">
+                                  {destination.name}
+                                </span>
                               </span>
                               {/* <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#232E2F] group-hover:translate-x-1 transition-all ml-auto" /> */}
                             </Link>
@@ -496,64 +487,6 @@ export default function Navbar() {
                   ABOUT US
                 </Link>
               </motion.div>
-
-              {/* Services Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleDropdownEnter("services")}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center text-[#232E2F] hover:text-[#2C3C81] font-medium transition-colors py-4 whitespace-nowrap"
-                  aria-label="Services"
-                >
-                  SERVICES
-                  <motion.div
-                    animate={{
-                      rotate: activeDropdown === "services" ? 180 : 0,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronDown className="ml-1 w-4 h-4" />
-                  </motion.div>
-                </motion.button>
-
-                <AnimatePresence>
-                  {activeDropdown === "services" && (
-                    <motion.div
-                      variants={dropdownVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                      className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 py-4 z-50"
-                    >
-                      <div className="space-y-1 px-4">
-                        {services.map((service, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                          >
-                            <Link
-                              href={service.route}
-                              className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#D9F1F1] transition-colors group"
-                              aria-label={service.name}
-                            >
-                              <span className="text-xl">{service.icon}</span>
-                              <span className="text-sm font-medium text-gray-700 group-hover:text-[#232E2F] flex-1">
-                                {service.name}
-                              </span>
-                              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#232E2F] group-hover:translate-x-1 transition-all" />
-                            </Link>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
 
               <motion.div whileHover={{ scale: 1.05 }}>
                 <Link
@@ -703,7 +636,7 @@ export default function Navbar() {
                             className="py-2 text-[#232E2F] hover:text-[#2C3C81] font-medium transition-colors"
                             onClick={() => setIsOpen(false)}
                           >
-                            STUDY DESTINATIONS
+                            ABROAD DESTINATIONS
                           </Link>
                           <button
                             onClick={(e) => {
@@ -831,66 +764,8 @@ export default function Navbar() {
                         onClick={() => setIsOpen(false)}
                         aria-label="About us"
                       >
-                        ABOUT US
+                        OUR STORY
                       </Link>
-
-                      {/* Services Mobile Dropdown */}
-                      <div className="border-b pb-2">
-                        <div className="flex items-center justify-between w-full">
-                          <Link
-                            href="/services"
-                            className="py-2 text-[#232E2F] hover:text-[#2C3C81] font-medium transition-colors"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            SERVICES
-                          </Link>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleMobileDropdown("services");
-                            }}
-                            aria-label="Toggle services dropdown"
-                            className="p-2"
-                          >
-                            <motion.div
-                              animate={{
-                                rotate: mobileDropdown === "services" ? 180 : 0,
-                              }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <ChevronDown className="w-4 h-4" />
-                            </motion.div>
-                          </button>
-                        </div>
-                        <AnimatePresence>
-                          {mobileDropdown === "services" && (
-                            <motion.div
-                              variants={mobileDropdownVariants}
-                              initial="hidden"
-                              animate="visible"
-                              exit="exit"
-                              className="overflow-hidden"
-                            >
-                              <div className="pl-4 py-2 space-y-2">
-                                {services.map((service, index) => (
-                                  <Link
-                                    key={index}
-                                    href={service.route}
-                                    className="flex items-center gap-3 py-2 text-[#232E2F] hover:text-[#2C3C81] transition-colors"
-                                    onClick={() => setIsOpen(false)}
-                                    aria-label={service.name}
-                                  >
-                                    <span className="text-xl">
-                                      {service.icon}
-                                    </span>
-                                    <span>{service.name}</span>
-                                  </Link>
-                                ))}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
 
                       <Link
                         href="/blog"
