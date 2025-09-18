@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { appwriteConfig, getImageUrl } from "@/utils/appwrite"; // Keep your original import
+import Link from "next/link";
 
 interface Story {
   $id: string;
@@ -177,10 +178,10 @@ export default function StudentSuccessCarousel(): JSX.Element {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2C3C81] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1aa7a7] mb-4">
             Student Success Stories
           </h2>
-          <p className="text-[#2C3C81]/80 text-lg max-w-3xl mx-auto">
+          <p className="text-[#232E2F] text-lg max-w-3xl mx-auto">
             Hear from our students who achieved their international education
             dreams
           </p>
@@ -234,11 +235,11 @@ export default function StudentSuccessCarousel(): JSX.Element {
                       )}
                     </div>
                     <div>
-                      <h3 className="font-bold text-[#2C3C81]">{story.name}</h3>
-                      <p className="text-sm text-[#2C3C81]/80">
+                      <h3 className="font-bold text-[#2a9f9f]">{story.name}</h3>
+                      <p className="text-sm text-[#2a9f9f]/80">
                         {story.program}
                       </p>
-                      <p className="text-xs text-[#2C3C81]/60">
+                      <p className="text-xs text-[#232E2F]/60">
                         {story.university}
                       </p>
                     </div>
@@ -250,14 +251,14 @@ export default function StudentSuccessCarousel(): JSX.Element {
                         key={i}
                         className={`w-5 h-5 ${
                           i < story.rating
-                            ? "text-[#C73D43] fill-current"
+                            ? "text-[#2a9f9f] fill-current"
                             : "text-gray-300"
                         }`}
                       />
                     ))}
                   </div>
 
-                  <p className="text-[#2C3C81]/90 mb-6 flex-grow line-clamp-4">
+                  <p className="text-[#232E2F]/90 mb-6 flex-grow line-clamp-4">
                     &quot;{story.content}&quot;
                   </p>
                 </motion.div>
@@ -278,174 +279,17 @@ export default function StudentSuccessCarousel(): JSX.Element {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsPopupOpen(true)}
-            className="group inline-flex items-center bg-[#C73D43] text-[#F5F4F5] px-8 py-3 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors"
+            className="group inline-flex items-center bg-[#2a9f9f] text-[#F5F4F5] px-8 py-3 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors"
             aria-label="Share your success story"
           >
+            <Link href="/share-your-story">
             Share Your Story
+            </Link>
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </motion.div>
 
-        {/* Popup Form */}
-        {isPopupOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="story-form-title"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto"
-            >
-              <button
-                onClick={() => setIsPopupOpen(false)}
-                className="absolute top-4 right-4 text-[#2C3C81] hover:text-[#C73D43] transition-colors"
-                aria-label="Close story submission form"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <h3
-                id="story-form-title"
-                className="text-2xl font-bold text-[#2C3C81] mb-6"
-              >
-                Share Your Success Story
-              </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-[#2C3C81] mb-2 font-medium"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-[#B2ACCE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2C3C81] transition-all"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="program"
-                    className="block text-[#2C3C81] mb-2 font-medium"
-                  >
-                    Program
-                  </label>
-                  <input
-                    id="program"
-                    type="text"
-                    name="program"
-                    value={formData.program}
-                    onChange={handleInputChange}
-                    placeholder="e.g., MSc Computer Science"
-                    className="w-full px-4 py-2 border border-[#B2ACCE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2C3C81] transition-all"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="university"
-                    className="block text-[#2C3C81] mb-2 font-medium"
-                  >
-                    University
-                  </label>
-                  <input
-                    id="university"
-                    type="text"
-                    name="university"
-                    value={formData.university}
-                    onChange={handleInputChange}
-                    placeholder="e.g., University of Toronto"
-                    className="w-full px-4 py-2 border border-[#B2ACCE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2C3C81] transition-all"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="photo"
-                    className="block text-[#2C3C81] mb-2 font-medium"
-                  >
-                    Your Photo (Optional)
-                  </label>
-                  <input
-                    id="photo"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="content"
-                    className="block text-[#2C3C81] mb-2 font-medium"
-                  >
-                    Your Story
-                  </label>
-                  <textarea
-                    id="content"
-                    name="content"
-                    value={formData.content}
-                    onChange={handleInputChange}
-                    rows={4}
-                    placeholder="Share your experience with us..."
-                    className="w-full px-4 py-2 border border-[#B2ACCE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2C3C81] transition-all"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="rating"
-                    className="block text-[#2C3C81] mb-2 font-medium"
-                  >
-                    Rating
-                  </label>
-                  <select
-                    id="rating"
-                    name="rating"
-                    value={formData.rating}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-[#B2ACCE] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2C3C81] transition-all"
-                  >
-                    {[5, 4, 3, 2, 1].map((num) => (
-                      <option key={num} value={num}>
-                        {num} Star{num !== 1 ? "s" : ""}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[#C73D43] text-[#F5F4F5] px-6 py-3 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors disabled:opacity-50"
-                  aria-label="Submit your story"
-                >
-                  {isSubmitting ? "Submitting..." : "Submit Your Story"}
-                </motion.button>
-              </form>
-            </motion.div>
-          </motion.div>
-        )}
+       
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import {
   Globe,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function StudyInAustralia() {
   const universities = [
@@ -260,7 +261,7 @@ export default function StudyInAustralia() {
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-            Advantages of <span className="text-[#D9F1F1]">Australian Education</span>
+            Advantages of <span className="text-[#369494]">Australian Education</span>
           </h2>
           <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Discover why Australia remains a premier destination for international students
@@ -316,7 +317,7 @@ export default function StudyInAustralia() {
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-            Experience <span className="text-[#D9F1F1]">Australian Education</span>
+            Experience <span className="text-[#369494]">Australian Education</span>
           </h2>
           <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Discover what makes Australian universities among the most sought-after globally
@@ -344,7 +345,7 @@ export default function StudyInAustralia() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Premier <span className="text-[#D9F1F1]">Universities</span> in Australia
+              Premier <span className="text-[#369494]">Universities</span> in Australia
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Partner institutions with global recognition and academic distinction
@@ -382,7 +383,7 @@ export default function StudyInAustralia() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Australia Study <span className="text-[#D9F1F1]">Requirements</span>
+              Australia Study <span className="text-[#369494]">Requirements</span>
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Essential criteria for students planning to study in Australia
@@ -496,7 +497,7 @@ export default function StudyInAustralia() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Frequently Asked <span className="text-[#D9F1F1]">Questions</span>
+              Frequently Asked <span className="text-[#369494]">Questions</span>
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Answers to common questions about studying in Australia
@@ -569,7 +570,7 @@ export default function StudyInAustralia() {
       </div>
 
       {/* CTA */}
-      <div className="bg-[#232E2F] py-16">
+      <div className="bg-[#2b7b7b] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Begin Your Australian Education Journey?
@@ -577,9 +578,11 @@ export default function StudyInAustralia() {
           <p className="text-xl text-[#D9F1F1] mb-8 max-w-3xl mx-auto">
             Our expert advisors at Joeun Education Consultancy are here to guide you through every step of the application process.
           </p>
-          <button className="bg-[#D9F1F1] text-[#232E2F] px-8 py-3 rounded-lg font-medium shadow-lg hover:bg-[#c5e5e5] transition-colors">
-            Contact Us Today
-          </button>
+          <Link href="/contact">
+            <button className="bg-[#D9F1F1] text-[#232E2F] px-8 py-3 rounded-lg font-medium shadow-lg hover:bg-[#c5e5e5] transition-colors">
+              Contact Us Today
+            </button>
+          </Link>
         </div>
       </div>
     </div>

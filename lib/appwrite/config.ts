@@ -2,7 +2,7 @@ export const appwriteConfig = {
   endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
   projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT!,
   databaseId: process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!,
-  apiKey: process.env.NEXT_APPWRITE_API_KEY!, // Changed to PUBLIC and standardized naming
+  apiKey: process.env.APPWRITE_API_KEY!, // Changed to PUBLIC and standardized naming
   buckets: {
     gallery: process.env.NEXT_PUBLIC_APPWRITE_GALLERY_BUCKET!,
     resources: process.env.NEXT_PUBLIC_APPWRITE_RESOURCES_BUCKET!, // Fixed typo

@@ -105,7 +105,7 @@ export default function StatsCounter() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#2C3C81] text-[#F5F4F5] py-16 md:py-20 px-4"
+      className="bg-[#2e7777] text-[#F5F4F5] py-16 md:py-20 px-4"
       aria-label="Our achievements"
     >
       <div className="container mx-auto">

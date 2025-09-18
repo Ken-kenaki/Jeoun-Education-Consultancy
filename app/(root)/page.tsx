@@ -8,7 +8,6 @@ import ContactSection from "@/Components/ContactSection";
 import FindUsSection from "@/Components/FindUs";
 import StudyDestinations from "@/Components/StudyDestinations";
 import HeroTwo from "@/Components/Hero-two";
-import ConnectWithUs from "@/Components/ConnectWithUs";
 import Values from "@/Components/Values";
 import GallerySlider from "@/Components/GallerySlider";
 
@@ -24,7 +23,6 @@ export default async function page() {
         <GallerySlider />
         <UniversitiesCarousel />
         <StudentSuccessCarousel />
-        <ConnectWithUs />
         <ContactSection />
         <FindUsSection />
       </div>

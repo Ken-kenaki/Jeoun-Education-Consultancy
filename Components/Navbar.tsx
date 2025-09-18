@@ -311,10 +311,10 @@ export default function Navbar() {
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="bg-[#D9F1F1] shadow-lg fixed lg:top-[40px] top-0 z-40 w-full"
+        className="bg-[#eaf8f8] shadow-lg fixed lg:top-[40px] top-0 z-40 w-full"
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-1">
+          <div className="flex justify-between items-center">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -328,10 +328,10 @@ export default function Navbar() {
               >
                 <Image
                   alt="Joeun Education Consultancy"
-                  width={102}
-                  height={102}
-                  className="w-16 md:w-20 lg:w-[82px]"
-                  src="/logo2.png"
+                  width={110}
+                  height={110}
+                  className="w-26 md:w-40 lg:w-[120px]"
+                  src="/logo.png"
                 />
               </Link>
             </motion.div>

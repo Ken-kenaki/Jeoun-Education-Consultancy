@@ -283,7 +283,7 @@ export default function StudyInSouthKorea() {
       <div id="benefits" className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-            Advantages of <span className="text-[#D9F1F1]">Korean Education</span>
+            Advantages of <span className="text-[#369494]">Korean Education</span>
           </h2>
           <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Discover why South Korea has become a premier destination for international students
@@ -314,7 +314,7 @@ export default function StudyInSouthKorea() {
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-            Experience <span className="text-[#D9F1F1]">Korean Education</span>
+            Experience <span className="text-[#369494]">Korean Education</span>
           </h2>
           <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Discover what makes Korean universities among the most innovative in Asia
@@ -342,7 +342,7 @@ export default function StudyInSouthKorea() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Premier <span className="text-[#D9F1F1]">Universities</span> in South Korea
+              Premier <span className="text-[#369494]">Universities</span> in South Korea
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Partner institutions with global recognition and technological innovation
@@ -380,7 +380,7 @@ export default function StudyInSouthKorea() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Korean Study <span className="text-[#D9F1F1]">Requirements</span>
+              Korean Study <span className="text-[#369494]">Requirements</span>
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Essential criteria for students planning to study in South Korea
@@ -492,7 +492,7 @@ export default function StudyInSouthKorea() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Frequently Asked <span className="text-[#D9F1F1]">Questions</span>
+              Frequently Asked <span className="text-[#369494]">Questions</span>
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Answers to common questions about studying in South Korea
@@ -565,7 +565,7 @@ export default function StudyInSouthKorea() {
       </div>
 
       {/* CTA */}
-      <div className="bg-[#232E2F] py-16">
+      <div className="bg-[#2b7b7b] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Begin Your Korean Education Journey?

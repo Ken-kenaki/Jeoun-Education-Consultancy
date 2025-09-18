@@ -33,12 +33,12 @@ export default function Footer() {
   const socialLinks: SocialLink[] = [
     {
       icon: <Facebook size={20} />,
-      url: "https://www.facebook.com/gurukuleducationalfoundation/",
+      url: "https://www.facebook.com/profile.php?id=61553837827750",
       label: "Facebook",
     },
     {
       icon: <Instagram size={20} />,
-      url: "https://www.instagram.com/gurukul_education44/",
+      url: "https://www.instagram.com/joeuneducation/?igshid=MWRsa3AxaDFvZmd6dQ==",
       label: "Instagram",
     },
     {
@@ -64,9 +64,9 @@ export default function Footer() {
     { name: "Universities", url: "/universities" },
     { name: "Test Preparations", url: "/test-preparations" },
     { name: "About Us", url: "/about" },
-    { name: "Services", url: "/services" },
     { name: "Blog", url: "/blog" },
     { name: "Contact", url: "/contact" },
+    { name: "Our journey", url: "/gallery" },
   ];
 
   const destinations: FooterLink[] = [
@@ -83,36 +83,30 @@ export default function Footer() {
   const contactInfo: ContactInfo[] = [
     {
       icon: <MapPin className="flex-shrink-0 mt-1" size={18} />,
-      text: "Gurukul Education Foundation, Kathmandu, Nepal",
+      text: "Joeun Education Consultancy, Boudhanath, Nepal",
     },
     {
       icon: <Phone size={18} />,
-      text: "01-5916232",
-      url: "tel:+977015916232",
+      text: "+977-9862358543",
+      url: "tel:+977-9862358543",
       isLink: true,
     },
     {
       icon: <Phone size={18} />,
-      text: "+977-985-1349350",
-      url: "tel:+9779851349350",
-      isLink: true,
-    },
-    {
-      icon: <Phone size={18} />,
-      text: "+977-986-7818090",
-      url: "tel:+9779867818090",
+      text: "+82-1067874320",
+      url: "tel:+82-1067874320",
       isLink: true,
     },
     {
       icon: <Mail size={18} />,
-      text: "info@gurukuleduc.com",
-      url: "mailto:info@gurukuleduc.com",
+      text: "info@joeuneducationconsultancy.com",
+      url: "mailto:info@joeuneducationconsultancy.com",
       isLink: true,
     },
     {
       icon: <Mail size={18} />,
-      text: "gurukuleducation44@gmail.com",
-      url: "mailto:gurukuleducation44@gmail.com",
+      text: "joeuneducationconsultancy@gmail.com",
+      url: "mailto:joeuneducationconsultancy@gmail.com",
       isLink: true,
     },
     {
@@ -126,9 +120,9 @@ export default function Footer() {
   ];
 
   const legalLinks: FooterLink[] = [
-    { name: "Privacy Policy", url: "/privacy-policy" },
-    { name: "Terms of Service", url: "/terms" },
-    { name: "Sitemap", url: "/sitemap" },
+    { name: "Privacy Policy", url: "#" },
+    { name: "Terms of Service", url: "#" },
+    { name: "Sitemap", url: "#" },
   ];
 
   return (
@@ -247,7 +241,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center text-[#D9F1F1] opacity-80 text-xs sm:text-sm">
           <div className="mb-4 md:mb-0">
-            © {new Date().getFullYear()} Gurukul Education. All rights reserved.
+            © {new Date().getFullYear()} Joeun Education Foundation. All rights reserved.
           </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {legalLinks.map((link, index) => (

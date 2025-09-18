@@ -85,25 +85,25 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: "Phone",
-      details: "+977-985-1349350",
-      link: "tel:+977-9851349350",
+      details: "+977-9862358543",
+      link: "tel:+977-9862358543",
     },
     {
       icon: Mail,
       title: "Email",
-      details: "info@gurukuleducation.com",
-      link: "mailto:info@gurukuleducation.com",
+      details: "info@joeuneducationconsultancy.com",
+      link: "mailto:info@joeuneducationconsultancy.com",
     },
     {
       icon: MapPin,
       title: "Address",
-      details: "Kathmandu, Nepal",
+      details: "Boudhanath, Nepal",
       link: "#",
     },
     {
       icon: Clock,
       title: "Office Hours",
-      details: "Mon-Fri: 9AM - 6PM",
+      details: "Suns-Fri: 6AM - 6PM",
       link: "#",
     },
   ];
@@ -139,10 +139,10 @@ export default function ContactSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2C3C81] mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#44b9b9] mb-3 sm:mb-4">
             Get In Touch
           </h2>
-          <p className="text-base sm:text-lg text-[#2C3C81]/80 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#44b9b9]/80 max-w-2xl mx-auto">
             Ready to start your international education journey? Contact us
             today for a free consultation.
           </p>
@@ -158,7 +158,7 @@ export default function ContactSection() {
             className="space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#2C3C81] mb-4 sm:mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#44b9b9] mb-4 sm:mb-6">
                 Contact Information
               </h3>
               <div className="space-y-4 sm:space-y-6">
@@ -171,23 +171,23 @@ export default function ContactSection() {
                     viewport={{ once: true }}
                     className="flex items-start gap-3 sm:gap-4"
                   >
-                    <div className="bg-[#C73D43] rounded-full p-2 sm:p-3 flex-shrink-0">
+                    <div className="bg-[#232E2F] rounded-full p-2 sm:p-3 flex-shrink-0">
                       <info.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-[#2C3C81] mb-1">
+                      <h4 className="font-semibold text-[#232E2F] mb-1">
                         {info.title}
                       </h4>
                       {info.link !== "#" ? (
                         <a
                           href={info.link}
-                          className="text-sm sm:text-base text-[#2C3C81]/80 hover:text-[#C73D43] transition-colors"
+                          className="text-sm sm:text-base text-[#232E2F]/80 hover:text-[#C73D43] transition-colors"
                           aria-label={`Contact via ${info.title}`}
                         >
                           {info.details}
                         </a>
                       ) : (
-                        <p className="text-sm sm:text-base text-[#2C3C81]/80">
+                        <p className="text-sm sm:text-base text-[232E2F]/80">
                           {info.details}
                         </p>
                       )}
@@ -203,7 +203,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-[#2C3C81] rounded-xl p-4 sm:p-6 text-white"
+              className="bg-[#52bebe] rounded-xl p-4 sm:p-6 text-white"
             >
               <h4 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
                 Need Immediate Help?
@@ -216,7 +216,7 @@ export default function ContactSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="tel:+9779844162726"
-                className="inline-flex items-center bg-[#C73D43] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-white hover:text-[#2C3C81] transition-colors text-sm sm:text-base"
+                className="inline-flex items-center bg-[#232E2F] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-white hover:text-[#2C3C81] transition-colors text-sm sm:text-base"
                 aria-label="Call us now"
               >
                 <Phone className="w-4 h-4 mr-2" />
@@ -233,7 +233,7 @@ export default function ContactSection() {
             viewport={{ once: true, margin: "-100px" }}
             className="bg-white rounded-xl shadow-lg p-6 sm:p-8"
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-[#2C3C81] mb-4 sm:mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#232E2F] mb-4 sm:mb-6">
               Send us a Message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -241,7 +241,7 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-[#2C3C81] mb-1 sm:mb-2"
+                    className="block text-sm font-medium text-[#232E2F] mb-1 sm:mb-2"
                   >
                     Full Name *
                   </label>
@@ -259,7 +259,7 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-[#2C3C81] mb-1 sm:mb-2"
+                    className="block text-sm font-medium text-[#232E2F] mb-1 sm:mb-2"
                   >
                     Email *
                   </label>
@@ -280,7 +280,7 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium text-[#2C3C81] mb-1 sm:mb-2"
+                    className="block text-sm font-medium text-[#232E2F] mb-1 sm:mb-2"
                   >
                     Phone *
                   </label>
@@ -298,7 +298,7 @@ export default function ContactSection() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-medium text-[#2C3C81] mb-1 sm:mb-2"
+                    className="block text-sm font-medium text-[#232E2F] mb-1 sm:mb-2"
                   >
                     Subject *
                   </label>
@@ -308,7 +308,7 @@ export default function ContactSection() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent transition-all text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44b9b9] focus:border-transparent transition-all text-sm sm:text-base"
                   >
                     <option value="">Select a subject</option>
                     <option value="General Inquiry">General Inquiry</option>
@@ -327,7 +327,7 @@ export default function ContactSection() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-[#2C3C81] mb-1 sm:mb-2"
+                  className="block text-sm font-medium text-[#232E2F] mb-1 sm:mb-2"
                 >
                   Message *
                 </label>
@@ -348,7 +348,7 @@ export default function ContactSection() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#C73D43] text-white py-3 sm:py-4 px-6 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="w-full bg-[#44b9b9s] text-white py-3 sm:py-4 px-6 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
                 aria-label="Submit contact form"
               >
                 {isSubmitting ? (

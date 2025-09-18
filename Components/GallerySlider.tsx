@@ -90,76 +90,7 @@ export default function GallerySlider() {
     <main className="overflow-x-hidden">
       <div className="w-full max-w-[100vw] min-h-screen pt-40 bg-[#D9F1F1]">
         <div className="max-w-7xl mx-auto px-6">
-          <header className="text-center mb-8">
-            <h1 className="text-5xl font-bold text-[#232E2F] mb-4">
-              Photo Gallery
-            </h1>
-            <p className="text-[#232E2F] text-lg">
-              Discover and explore your beautiful memories.
-            </p>
-          </header>
-
-          {/* Stats and View Mode */}
-          <section className="bg-white p-4 rounded-xl shadow mb-6 flex flex-wrap justify-between items-center gap-4">
-            <div className="flex gap-6 items-center text-[#232E2F]">
-              <div className="flex gap-1 items-center">
-                <Eye className="w-4 h-4 text-[#232E2F]" />
-                <span>Total:</span>
-                <strong>{images.length}</strong>
-              </div>
-              <div className="flex gap-1 items-center">
-                <Search className="w-4 h-4 text-[#232E2F]" />
-                <span>Filtered:</span>
-                <strong>{filteredImages.length}</strong>
-              </div>
-            </div>
-            <div
-              className="flex gap-2 bg-gray-100 p-1 rounded-lg"
-              role="group"
-              aria-label="View mode toggle"
-            >
-              <button
-                onClick={() => setViewMode("grid")}
-                aria-pressed={viewMode === "grid"}
-                className={`p-2 rounded ${
-                  viewMode === "grid"
-                    ? "bg-white shadow text-[#232E2F]"
-                    : "text-gray-500"
-                }`}
-                aria-label="Grid view"
-              >
-                <Grid className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode("slider")}
-                aria-pressed={viewMode === "slider"}
-                className={`p-2 rounded ${
-                  viewMode === "slider"
-                    ? "bg-white shadow text-[#232E2F]"
-                    : "text-gray-500"
-                }`}
-                aria-label="Slider view"
-              >
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </section>
-
-          {/* Search Bar */}
-          <div className="mb-8 max-w-md mx-auto relative">
-            <Search
-              className="absolute left-3 top-3 text-[#232E2F]"
-              aria-hidden="true"
-            />
-            <input
-              type="search"
-              aria-label="Search images"
-              placeholder="Search images..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-xl focus:border-[#232E2F] focus:ring-[#232E2F] outline-none shadow-sm border-[#232E2F]/20"
-            />
-          </div>
+          
 
           {/* Images Display */}
           {filteredImages.length === 0 ? (
@@ -173,7 +104,7 @@ export default function GallerySlider() {
                 aria-hidden="true"
               />
               <p className="text-lg text-[#232E2F]">
-                No images found. Try a different search.
+                No images found
               </p>
             </div>
           ) : viewMode === "grid" ? (

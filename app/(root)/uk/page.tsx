@@ -283,7 +283,7 @@ export default function StudyInUK() {
       <div id="benefits" className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-            Advantages of <span className="text-[#D9F1F1]">UK Education</span>
+            Advantages of <span className="text-[#369494]">UK Education</span>
           </h2>
           <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Discover why the United Kingdom remains a premier destination for international students
@@ -314,7 +314,7 @@ export default function StudyInUK() {
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-            Experience <span className="text-[#D9F1F1]">UK Education</span>
+            Experience <span className="text-[#369494]">UK Education</span>
           </h2>
           <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Discover what makes UK universities among the most prestigious globally
@@ -342,7 +342,7 @@ export default function StudyInUK() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Premier <span className="text-[#D9F1F1]">Universities</span> in the UK
+              Premier <span className="text-[#369494]">Universities</span> in the UK
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Partner institutions with global recognition and academic distinction
@@ -380,7 +380,7 @@ export default function StudyInUK() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              UK Study <span className="text-[#D9F1F1]">Requirements</span>
+              UK Study <span className="text-[#369494]">Requirements</span>
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Essential criteria for students planning to study in the United Kingdom
@@ -494,7 +494,7 @@ export default function StudyInUK() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#232E2F] mb-4">
-              Frequently Asked <span className="text-[#D9F1F1]">Questions</span>
+              Frequently Asked <span className="text-[#369494]">Questions</span>
             </h2>
             <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
               Answers to common questions about studying in the United Kingdom
@@ -567,7 +567,7 @@ export default function StudyInUK() {
       </div>
 
       {/* CTA */}
-      <div className="bg-[#232E2F] py-16">
+      <div className="bg-[#2b7b7b] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Begin Your UK Education Journey?
