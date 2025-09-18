@@ -88,71 +88,7 @@ export default function StudentSuccessCarousel(): JSX.Element {
     fetchStories();
   }, [fetchStories]);
 
-  const handleInputChange = useCallback(
-    (
-      e: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    ) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    },
-    []
-  );
 
-  const handleFileChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData((prev) => ({
-        ...prev,
-        file: e.target.files?.[0] || null,
-      }));
-    },
-    []
-  );
-
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
-      setIsSubmitting(true);
-
-      try {
-        const formDataToSend = new FormData();
-        formDataToSend.append("name", formData.name);
-        formDataToSend.append("program", formData.program);
-        formDataToSend.append("university", formData.university);
-        formDataToSend.append("content", formData.content);
-        formDataToSend.append("rating", formData.rating.toString());
-
-        if (formData.file) {
-          formDataToSend.append("file", formData.file);
-        }
-
-        const response = await fetch("/api/stories", {
-          method: "POST",
-          body: formDataToSend,
-        });
-
-        if (!response.ok) throw new Error("Failed to submit story");
-
-        setIsPopupOpen(false);
-        setFormData({
-          name: "",
-          program: "",
-          university: "",
-          content: "",
-          rating: 5,
-          file: null,
-        });
-        alert("Thank you! Your story has been submitted for review.");
-        await fetchStories();
-      } catch (error) {
-        alert("Failed to submit story. Please try again.");
-      } finally {
-        setIsSubmitting(false);
-      }
-    },
-    [formData, fetchStories]
-  );
 
   if (loading) {
     return (

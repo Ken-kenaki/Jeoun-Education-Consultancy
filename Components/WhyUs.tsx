@@ -54,14 +54,14 @@ export default function WhyUs() {
         "With over  in international education, our counselors have successfully guided thousands of students to their dream universities worldwide.",
       image: "/why-us-1.jpg",
       imagePosition: "left",
-      buttonText: "MEET OUR TEAM",
-      buttonLink: "/about/#team", 
+      buttonText: "CALL NOW",
+      buttonLink: "TEL:+1234567890", 
     },
     {
       title: "Personalized Approach",
       description:
         "Every student receives a customized roadmap tailored to their academic background, career goals, and personal aspirations.",
-      image: "/why-us-2.jpeg",
+      image: "/why-us-2.jpg",
       imagePosition: "right",
       buttonText: "SEE SUCCESS STORIES",
       buttonLink: "/success-stories",
@@ -70,10 +70,10 @@ export default function WhyUs() {
       title: "End-to-End Support",
       description:
         "From test preparation to visa approval and post-arrival assistance, we're with you at every step of your journey.",
-      image: "/why-us-3.jpeg",
+      image: "/why-us-3.jpg",
       imagePosition: "left",
-      buttonText: "VIEW OUR SERVICES",
-      buttonLink: "/services",
+      buttonText: "GET CONSULTATION",
+      buttonLink: "/contact",
     },
   ];
 
@@ -81,10 +81,10 @@ export default function WhyUs() {
     <div ref={sectionRef} className="bg-[#F5F4F5] py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2C3C81] mb-4 animate-item">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#2e7777] mb-4 animate-item">
             Why Choose Us?
           </h2>
-          <div className="w-20 h-1 bg-[#C73D43] mx-auto animate-item"></div>
+          <div className="w-20 h-1 bg-[#1c1919] mx-auto animate-item"></div>
         </div>
 
         {features.map((feature, index) => (
@@ -119,15 +119,15 @@ export default function WhyUs() {
                 feature.imagePosition === "right" ? "lg:pr-8" : "lg:pl-8"
               }`}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-[#2C3C81]">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#2e7777]">
                 {feature.title}
               </h3>
-              <p className="text-[#2C3C81]/80 text-lg leading-relaxed">
+              <p className="text-[#2e7777]/80 text-lg leading-relaxed">
                 {feature.description}
               </p>
               <Link
                 href={feature.buttonLink}
-                className="group inline-flex items-center bg-[#C73D43] text-[#F5F4F5] px-6 py-3 rounded-lg font-semibold hover:bg-[#2C3C81] hover:shadow-lg transition-all duration-300 shadow-md"
+                className="group inline-flex items-center bg-[#2e7777] text-[#F5F4F5] px-6 py-3 rounded-lg font-semibold hover:bg-[#2C3C81] hover:shadow-lg transition-all duration-300 shadow-md"
               >
                 <span>{feature.buttonText}</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

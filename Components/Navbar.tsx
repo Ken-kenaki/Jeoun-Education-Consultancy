@@ -484,7 +484,7 @@ export default function Navbar() {
                   className="text-[#232E2F] hover:text-[#2C3C81] font-medium transition-colors whitespace-nowrap"
                   aria-label="About us"
                 >
-                  ABOUT US
+                  OUR STORY
                 </Link>
               </motion.div>
 
@@ -805,13 +805,13 @@ export default function Navbar() {
                       </Link>
 
                       <Link
-                        href="/chat-with-jeon-ai"
+                        href="/chat-with-joeun-ai"
                         className="flex items-center gap-2 py-2 text-[#232E2F] hover:text-[#2C3C81] font-medium transition-colors border-b"
                         onClick={() => setIsOpen(false)}
                         aria-label="Chat with Jeon AI"
                       >
                         <MessageCircle className="w-4 h-4" />
-                        <span>CHAT WITH JEON AI</span>
+                        <span>CHAT WITH JOEUN AI</span>
                       </Link>
                     </div>
 
@@ -914,13 +914,13 @@ export default function Navbar() {
                   </Link>
 
                   <Link
-                    href="/chat-with-jeon-ai"
+                    href="/chat-with-joeun-ai"
                     className="flex items-center gap-3 py-3 text-[#232E2F] hover:text-[#2C3C81] font-medium transition-colors border-b"
                     onClick={() => setIsSideNavOpen(false)}
-                    aria-label="Chat with Jeon AI"
+                    aria-label="Chat with Joeun AI"
                   >
                     <MessageCircle className="w-5 h-5" />
-                    <span>CHAT WITH JEON AI</span>
+                    <span>CHAT WITH JOEUN AI</span>
                   </Link>
                   <Link
                     href="/gallery"
