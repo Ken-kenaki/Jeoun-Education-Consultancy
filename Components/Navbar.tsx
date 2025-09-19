@@ -83,22 +83,36 @@ export default function Navbar() {
   ];
 
   // Fetch news events from API
+  // Update the useEffect hook for fetching news
   useEffect(() => {
     const fetchNewsEvents = async () => {
       try {
         const response = await fetch("/api/news-events?limit=5");
         if (response.ok) {
           const data = await response.json();
+          console.log("Fetched news events:", data);
           setNewsEvents(data);
+        } else {
+          console.error("Failed to fetch news events:", response.status);
         }
       } catch (error) {
         console.error("Failed to fetch news events:", error);
+        // Set default news on error
+        setNewsEvents([
+          {
+            id: "default-1",
+            title: "Welcome to Joeun Education Consultancy",
+            type: "news",
+            content: "We help students achieve their study abroad dreams",
+            date: new Date().toISOString(),
+            status: "published",
+          },
+        ]);
       }
     };
 
     fetchNewsEvents();
   }, []);
-
   // Auto-rotate news events
   useEffect(() => {
     if (newsEvents.length > 1) {
@@ -297,7 +311,7 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="flex items-center justify-center gap-4">
-              nothing
+              No Events | Updates Available
             </div>
           )}
         </div>

@@ -52,48 +52,7 @@ export default function TestPreparationsPage() {
         "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop",
       color: "from-blue-500 to-blue-600",
     },
-    {
-      id: "pte",
-      name: "PTE",
-      fullName: "Pearson Test of English",
-      description:
-        "Excel in PTE Academic with our AI-powered preparation tools and expert guidance for computer-based English testing.",
-      duration: "6-10 weeks",
-      students: "300+",
-      rating: 4.7,
-      features: [
-        "AI-powered speaking practice",
-        "Computer-based test simulation",
-        "Automated scoring system",
-        "Integrated skills training",
-        "Real exam environment practice",
-        "Personalized study plans",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
-      color: "from-green-500 to-green-600",
-    },
-    {
-      id: "japanese-language",
-      name: "Japanese",
-      fullName: "Japanese Language Proficiency Test (JLPT)",
-      description:
-        "Learn Japanese from basics to advanced levels with our structured curriculum designed for JLPT success.",
-      duration: "12-24 weeks",
-      students: "200+",
-      rating: 4.9,
-      features: [
-        "Hiragana, Katakana, and Kanji training",
-        "Grammar and vocabulary building",
-        "Conversation practice with native speakers",
-        "Cultural context and etiquette",
-        "JLPT N5 to N1 level preparation",
-        "Interactive learning materials",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1528164344705-47542687000d?w=400&h=300&fit=crop",
-      color: "from-red-500 to-pink-500",
-    },
+
     {
       id: "korean-language",
       name: "Korean",

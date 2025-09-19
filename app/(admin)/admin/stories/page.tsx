@@ -370,7 +370,7 @@ export default function StoriesPage() {
                   htmlFor="program"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Program
+                  Program (Optional)
                 </label>
                 <input
                   id="program"
@@ -381,7 +381,6 @@ export default function StoriesPage() {
                   }
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   placeholder="e.g., MSc Computer Science"
-                  required
                 />
               </div>
 
@@ -390,7 +389,7 @@ export default function StoriesPage() {
                   htmlFor="university"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  University
+                  University (Optional)
                 </label>
                 <input
                   id="university"
@@ -401,7 +400,6 @@ export default function StoriesPage() {
                   }
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   placeholder="e.g., University of Toronto"
-                  required
                 />
               </div>
 

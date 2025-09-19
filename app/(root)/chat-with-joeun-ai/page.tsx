@@ -1,21 +1,11 @@
-// import Chatbot from '@/Components/chatbot'
-// import React from 'react'
-
-// const page = () => {
-//   return (
-//     <div>
-//         <Chatbot />
-//     </div>
-//   )
-// }
-
-// export default page
-
+import Chatbot from '@/Components/Chatbot'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className='mt-40'>
+      <Chatbot />
+    </div>
   )
 }
 
