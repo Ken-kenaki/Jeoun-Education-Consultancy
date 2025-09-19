@@ -181,7 +181,7 @@ export default function ContactSection() {
                       {info.link !== "#" ? (
                         <a
                           href={info.link}
-                          className="text-sm sm:text-base text-[#232E2F]/80 hover:text-[#C73D43] transition-colors"
+                          className="text-sm sm:text-base text-[#232E2F]/80 hover:text-[#44b9b9] transition-colors"
                           aria-label={`Contact via ${info.title}`}
                         >
                           {info.details}
@@ -252,7 +252,7 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent transition-all text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44b9b9] focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="Your full name"
                   />
                 </div>
@@ -270,7 +270,7 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent transition-all text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44b9b9] focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -291,7 +291,7 @@ export default function ContactSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent transition-all text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44b9b9] focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="Your phone number"
                   />
                 </div>
@@ -338,7 +338,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent transition-all text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44b9b9] focus:border-transparent transition-all text-sm sm:text-base"
                   placeholder="Tell us about your study abroad goals..."
                 />
               </div>
@@ -348,7 +348,7 @@ export default function ContactSection() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#44b9b9s] text-white py-3 sm:py-4 px-6 rounded-lg font-semibold hover:bg-[#2C3C81] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="w-full bg-[#44b9b9] text-white py-3 sm:py-4 px-6 rounded-lg font-semibold hover:bg-[#468686] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
                 aria-label="Submit contact form"
               >
                 {isSubmitting ? (
