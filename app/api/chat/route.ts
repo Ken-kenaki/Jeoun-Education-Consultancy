@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'HTTP-Referer': process.env.SITE_URL || 'http://localhost:3000',
+        'HTTP-Referer': process.env.SITE_URL || 'https://joeuneducationconsultancy.com',
         'X-Title': process.env.SITE_NAME || 'Joeun Education Consultancy',
         'Content-Type': 'application/json',
       },
