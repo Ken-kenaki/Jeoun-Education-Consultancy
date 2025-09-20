@@ -104,14 +104,6 @@ export async function POST(request: NextRequest) {
     const status = formData.get("status")?.toString() ?? "pending";
     const file = formData.get("file") as File | null;
 
-    if (!name || !program || !university || !content || isNaN(rating)) {
-      return NextResponse.json(
-        {
-          error: "Name, program, university, content, and rating are required",
-        },
-        { status: 400 }
-      );
-    }
 
     let imageId: string | undefined;
     if (file) {
