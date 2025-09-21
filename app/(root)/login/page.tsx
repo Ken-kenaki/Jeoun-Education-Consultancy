@@ -93,9 +93,7 @@ export default function LoginPage() {
               className="w-[120px] h-auto mb-4"
             />
             <div className="text-[1.8rem] font-bold text-[#4374BA]">Joeun Education Consultancy</div>
-            <div className="text-[0.95rem] mt-2 text-[#3DB878] text-center max-w-[200px]">
-              Elevate your dream to study abroad
-            </div>
+
           </motion.div>
         </div>
 

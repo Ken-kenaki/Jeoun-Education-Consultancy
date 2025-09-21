@@ -3,6 +3,7 @@ import { GeistSans, GeistMono } from "geist/font";
 import "../globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import Chatbot from "@/Components/Chatbot";
 
 export const metadata: Metadata = {
   icons: {
@@ -83,6 +84,9 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
+          <div className="fixed bottom-0 right-4 z-50">
+            <Chatbot />
+          </div>
           <Footer />
         </div>
       </body>

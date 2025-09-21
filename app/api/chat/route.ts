@@ -37,6 +37,55 @@ interface OpenRouterResponse {
   };
 }
 
+// Consultancy information
+const consultancyInfo = {
+  name: "Joeun Education Consultancy",
+  tagline: "Transforming dreams into global education realities",
+  services: ["Study Abroad Consulting", "Visa Assistance", "Test Preparation"],
+  studyDestinations: ["South Korea", "Australia", "UK"],
+  testPreparations: ["IELTS Preparation", "Korean Language"],
+  about: "Joeun Education Consultancy helps students achieve their dreams of studying abroad, with a special focus on South Korea. We provide end-to-end support from university selection to visa processing.",
+  contact: {
+    nepal: {
+      address1: "Big Mart, Purano Arab Bank, Gokameshwor, Kathmandu, Nepal",
+      address2: "Joeun Education Consultancy, Boudhanath, Nepal",
+      phone: "+977 9808085693",
+      phone2: "+977-9862358543"
+    },
+    korea: {
+      phone: "+82 106 787 4320"
+    },
+    email: "joeuneducationconsultancy@gmail.com",
+    email2: "info@joeuneducationconsultancy.com",
+    website: "www.joeuneducation.com",
+    instagram: "instagram.com/joeuneducation"
+  },
+  koreaPrograms: {
+    d4: {
+      name: "D4 Language Visa",
+      requirements: ["No IELTS Required", "Minimum GPA: 2.80", "Gap Accepted: Up to 3 Years"],
+      locations: ["Seoul", "Daegu"],
+      intake: "December / March",
+      applyBy: "August 30"
+    },
+    d2: {
+      name: "D2 Study Visa",
+      requirements: ["IELTS 5.5 Overall (Not less than 5.5)", "Minimum GPA: 3.20", "Gap Accepted: Up to 2 Years", "2024 passouts can apply"],
+      locations: ["Seoul", "Daegu", "Gwangju"],
+      intake: "March 2026",
+      scholarship: "Scholarship Available",
+      features: ["Affordable Tuition fee & Accommodation"]
+    }
+  },
+  benefits: [
+    "World's top-ranked universities",
+    "Excellent career opportunities with companies like Samsung and Hyundai",
+    "Affordable cost of living compared to Western nations",
+    "Vibrant culture with traditional and modern influences",
+    "Various scholarships available like KGSP"
+  ]
+};
+
 export async function POST(req: NextRequest) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -54,6 +103,46 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check for consultancy-specific queries first
+    const lowerCaseMessage = message.toLowerCase();
+    
+    // Handle specific consultancy queries without calling the AI
+    if (lowerCaseMessage.includes('what') && (lowerCaseMessage.includes('service') || lowerCaseMessage.includes('offer'))) {
+      return NextResponse.json({ 
+        reply: `We provide ${consultancyInfo.services.join(', ')}. We specialize in study destinations like ${consultancyInfo.studyDestinations.join(', ')} and test preparations for ${consultancyInfo.testPreparations.join(' and ')}.` 
+      });
+    }
+    
+    if (lowerCaseMessage.includes('korea') || lowerCaseMessage.includes('south korea')) {
+      if (lowerCaseMessage.includes('d4') || lowerCaseMessage.includes('language')) {
+        return NextResponse.json({
+          reply: `For the ${consultancyInfo.koreaPrograms.d4.name}:\n- Requirements: ${consultancyInfo.koreaPrograms.d4.requirements.join(', ')}\n- Locations: ${consultancyInfo.koreaPrograms.d4.locations.join(', ')}\n- Intake: ${consultancyInfo.koreaPrograms.d4.intake}\n- Apply by: ${consultancyInfo.koreaPrograms.d4.applyBy}`
+        });
+      }
+      
+      if (lowerCaseMessage.includes('d2') || lowerCaseMessage.includes('study')) {
+        return NextResponse.json({
+          reply: `For the ${consultancyInfo.koreaPrograms.d2.name}:\n- Requirements: ${consultancyInfo.koreaPrograms.d2.requirements.join(', ')}\n- Locations: ${consultancyInfo.koreaPrograms.d2.locations.join(', ')}\n- Intake: ${consultancyInfo.koreaPrograms.d2.intake}\n- ${consultancyInfo.koreaPrograms.d2.scholarship}\n- ${consultancyInfo.koreaPrograms.d2.features.join(', ')}`
+        });
+      }
+      
+      return NextResponse.json({
+        reply: `Studying in South Korea offers many benefits: ${consultancyInfo.benefits.join(', ')}. We offer both D4 Language Visa and D2 Study Visa programs. Which one are you interested in?`
+      });
+    }
+    
+    if (lowerCaseMessage.includes('contact') || lowerCaseMessage.includes('address') || lowerCaseMessage.includes('email') || lowerCaseMessage.includes('phone')) {
+      return NextResponse.json({
+        reply: `You can contact us at:\nNepal Offices:\n- ${consultancyInfo.contact.nepal.address1}\n- ${consultancyInfo.contact.nepal.address2}\nPhone: ${consultancyInfo.contact.nepal.phone} / ${consultancyInfo.contact.nepal.phone2}\nKorea Office Phone: ${consultancyInfo.contact.korea.phone}\nEmail: ${consultancyInfo.contact.email} or ${consultancyInfo.contact.email2}\nWebsite: ${consultancyInfo.contact.website}`
+      });
+    }
+    
+    if (lowerCaseMessage.includes('about') || lowerCaseMessage.includes('who are you')) {
+      return NextResponse.json({
+        reply: `${consultancyInfo.about} We are ${consultancyInfo.name} - ${consultancyInfo.tagline}. How can I assist you with your study abroad journey?`
+      });
+    }
+
     // Check if API key is set
     if (!process.env.OPENROUTER_API_KEY) {
       console.error('OPENROUTER_API_KEY is not set in environment variables');
@@ -63,20 +152,40 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Build the messages array
-    const messages: ChatMessage[] = conversationHistory || [];
+    // Build the messages array with system prompt
+    const messages: ChatMessage[] = [
+      {
+        role: 'system',
+        content: `You are Joeun AI, an assistant for Joeun Education Consultancy. 
+        Company: ${consultancyInfo.name} - ${consultancyInfo.tagline}
+        Services: ${consultancyInfo.services.join(', ')}
+        Study Destinations: ${consultancyInfo.studyDestinations.join(', ')}
+        Test Preparations: ${consultancyInfo.testPreparations.join(', ')}
+        About: ${consultancyInfo.about}
+        Contact Nepal: ${consultancyInfo.contact.nepal.address1}, ${consultancyInfo.contact.nepal.address2}, Phone: ${consultancyInfo.contact.nepal.phone}
+        Contact Korea: Phone: ${consultancyInfo.contact.korea.phone}
+        Email: ${consultancyInfo.contact.email}, Website: ${consultancyInfo.contact.website}
+        
+        South Korea Programs:
+        - D4 Language Visa: ${consultancyInfo.koreaPrograms.d4.requirements.join(', ')}. Locations: ${consultancyInfo.koreaPrograms.d4.locations.join(', ')}. Intake: ${consultancyInfo.koreaPrograms.d4.intake}.
+        - D2 Study Visa: ${consultancyInfo.koreaPrograms.d2.requirements.join(', ')}. Locations: ${consultancyInfo.koreaPrograms.d2.locations.join(', ')}. Intake: ${consultancyInfo.koreaPrograms.d2.intake}.
+        
+        Be helpful, friendly, and professional. Provide accurate information about studying abroad, especially in South Korea. 
+        If someone asks about visa requirements, programs, or contact information, provide the specific details.`
+      },
+      ...(conversationHistory || [])
+    ];
+    
     messages.push({ role: 'user', content: message });
 
     // Prepare the request to OpenRouter
     const openRouterRequest: OpenRouterRequest = {
-      model: 'deepseek/deepseek-chat', // Correct model format
+      model: 'deepseek/deepseek-chat',
       messages,
       temperature: 0.7,
       max_tokens: 1000,
       stream: false,
     };
-
-    console.log('Sending request to OpenRouter with model:', openRouterRequest.model);
 
     // Make request to OpenRouter
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -91,7 +200,6 @@ export async function POST(req: NextRequest) {
     });
 
     const responseText = await response.text();
-    console.log('OpenRouter response status:', response.status);
 
     if (!response.ok) {
       let errorMessage = `OpenRouter API error: ${response.status}`;
@@ -99,9 +207,8 @@ export async function POST(req: NextRequest) {
       try {
         const errorData: OpenRouterErrorResponse = JSON.parse(responseText);
         errorMessage = errorData.error?.message || errorMessage;
-        console.error('OpenRouter API error details:', errorData);
       } catch (e) {
-        console.error('OpenRouter API error response (could not parse):', responseText);
+        console.error('OpenRouter API error response:', responseText);
       }
       
       return NextResponse.json(
@@ -113,9 +220,8 @@ export async function POST(req: NextRequest) {
     let data: OpenRouterResponse;
     try {
       data = JSON.parse(responseText);
-      console.log('OpenRouter response parsed successfully');
     } catch (parseError) {
-      console.error('Failed to parse OpenRouter response:', parseError, responseText);
+      console.error('Failed to parse OpenRouter response:', responseText);
       return NextResponse.json(
         { error: 'Invalid response format from AI service' },
         { status: 500 }
@@ -141,7 +247,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('Chat API unexpected error:', error);
     return NextResponse.json(
-      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }

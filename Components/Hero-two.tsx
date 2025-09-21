@@ -6,7 +6,7 @@ import React from "react";
 
 const HeroTwo = () => {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#D9F1F1]">
+    <section className="relative  w-full h-screen flex items-center justify-center overflow-hidden bg-[#D9F1F1]">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full z-10">
         <video
@@ -22,7 +22,7 @@ const HeroTwo = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#D9F1F1]/30 to-[#232E2F]/30 z-20"></div>
 
       {/* Content */}
-      <div className="relative z-30 text-center px-4 md:px-8 max-w-4xl">
+      <div className="relative z-20 text-center px-4 md:px-8 max-w-4xl">
         <motion.h1
           className="text-4xl md:text-6xl font-bold text-[#232E2F] mb-6"
           initial={{ opacity: 0, y: 20 }}

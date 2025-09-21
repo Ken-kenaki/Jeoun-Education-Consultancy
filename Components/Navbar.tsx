@@ -601,7 +601,7 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="lg:hidden fixed inset-0 z-40"
+                className="lg:hidden fixed inset-0 z-100"
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
@@ -610,7 +610,7 @@ export default function Navbar() {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="lg:hidden fixed top-0 right-0 w-full max-w-xs bg-white h-screen z-50 shadow-xl overflow-y-auto"
+                className="lg:hidden fixed top-0 right-0 w-full max-w-xs bg-white h-screen z-100 shadow-xl overflow-y-auto"
               >
                 <div className="p-6">
                   <motion.button
@@ -890,7 +890,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="hidden lg:block fixed top-0 right-0 w-80 bg-white h-screen z-50 shadow-xl overflow-y-auto"
+            className="hidden lg:block fixed top-0 right-0 w-80 bg-white h-screen z-70 shadow-xl overflow-y-auto"
           >
             <div className="p-6">
               <motion.button
