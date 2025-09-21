@@ -50,7 +50,7 @@ export default function TestPreparationsPage() {
       ],
       image:
         "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop",
-      color: "from-blue-500 to-blue-600",
+      color: "from-[#232E2F] to-[#3A4A4B]",
     },
 
     {
@@ -72,7 +72,7 @@ export default function TestPreparationsPage() {
       ],
       image:
         "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=400&h=300&fit=crop",
-      color: "from-purple-500 to-indigo-500",
+      color: "from-[#232E2F] to-[#3A4A4B]",
     },
   ];
 
@@ -98,7 +98,7 @@ export default function TestPreparationsPage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 bg-gradient-to-br from-[#F5F4F5] via-white to-[#B2ACCE]/20">
+    <div className="min-h-screen pt-32 bg-[#D9F1F1]">
       <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <motion.div
@@ -107,34 +107,13 @@ export default function TestPreparationsPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2C3C81] mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#232E2F] mb-4">
             Test Preparations
           </h1>
-          <p className="text-lg text-[#2C3C81]/80 max-w-3xl mx-auto">
+          <p className="text-lg text-[#232E2F]/80 max-w-3xl mx-auto">
             Master IELTS, PTE, Japanese, and Korean language tests with our
             expert-led preparation programs
           </p>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-        >
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-[#C73D43] mb-2">1200+</div>
-            <div className="text-[#2C3C81]/70">Students Trained</div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-[#C73D43] mb-2">95%</div>
-            <div className="text-[#2C3C81]/70">Success Rate</div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="text-3xl font-bold text-[#C73D43] mb-2">4.8</div>
-            <div className="text-[#2C3C81]/70">Average Rating</div>
-          </div>
         </motion.div>
 
         {/* Test Preparations Grid */}
@@ -159,7 +138,7 @@ export default function TestPreparationsPage() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${test.color} opacity-80`}
+                  className={`absolute inset-0 bg-gradient-to-r ${test.color} opacity-90`}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h3 className="text-3xl font-bold text-white">{test.name}</h3>
@@ -167,29 +146,29 @@ export default function TestPreparationsPage() {
               </div>
 
               <div className="p-6">
-                <h4 className="text-lg font-semibold text-[#2C3C81] mb-2">
+                <h4 className="text-lg font-semibold text-[#232E2F] mb-2">
                   {test.fullName}
                 </h4>
-                <p className="text-[#2C3C81]/70 mb-4 line-clamp-2">
+                <p className="text-[#232E2F]/70 mb-4 line-clamp-2">
                   {test.description}
                 </p>
 
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   <div className="text-center">
-                    <Clock size={20} className="mx-auto text-[#C73D43] mb-1" />
-                    <div className="text-sm text-[#2C3C81]/70">
+                    <Clock size={20} className="mx-auto text-[#232E2F] mb-1" />
+                    <div className="text-sm text-[#232E2F]/70">
                       {test.duration}
                     </div>
                   </div>
                   <div className="text-center">
-                    <Users size={20} className="mx-auto text-[#C73D43] mb-1" />
-                    <div className="text-sm text-[#2C3C81]/70">
+                    <Users size={20} className="mx-auto text-[#232E2F] mb-1" />
+                    <div className="text-sm text-[#232E2F]/70">
                       {test.students}
                     </div>
                   </div>
                   <div className="text-center">
-                    <Star size={20} className="mx-auto text-[#C73D43] mb-1" />
-                    <div className="text-sm text-[#2C3C81]/70">
+                    <Star size={20} className="mx-auto text-[#232E2F] mb-1" />
+                    <div className="text-sm text-[#232E2F]/70">
                       {test.rating}/5
                     </div>
                   </div>
@@ -198,7 +177,7 @@ export default function TestPreparationsPage() {
                 <div className="flex justify-end">
                   <Link
                     href={`/test-preparations/${test.id}`}
-                    className="bg-[#2C3C81] text-white px-4 py-2 rounded-lg hover:bg-[#C73D43] transition-colors group flex items-center"
+                    className="bg-[#232E2F] text-white px-4 py-2 rounded-lg hover:bg-[#3A4A4B] transition-colors group flex items-center"
                   >
                     <span>Learn More</span>
                     <ArrowRight
@@ -235,7 +214,7 @@ export default function TestPreparationsPage() {
                   className="w-full h-full object-cover"
                 />
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${selectedTest.color} opacity-80`}
+                  className={`absolute inset-0 bg-gradient-to-r ${selectedTest.color} opacity-90`}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white">
@@ -247,7 +226,7 @@ export default function TestPreparationsPage() {
                 </div>
                 <button
                   onClick={() => setSelectedTest(null)}
-                  className="absolute top-4 right-4 bg-white/90 hover:bg-white text-[#2C3C81] rounded-full p-2 transition-colors"
+                  className="absolute top-4 right-4 bg-white/90 hover:bg-white text-[#232E2F] rounded-full p-2 transition-colors"
                 >
                   ×
                 </button>
@@ -256,45 +235,45 @@ export default function TestPreparationsPage() {
               <div className="p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-xl font-bold text-[#2C3C81] mb-4">
+                    <h3 className="text-xl font-bold text-[#232E2F] mb-4">
                       Course Overview
                     </h3>
-                    <p className="text-[#2C3C81]/70 mb-6">
+                    <p className="text-[#232E2F]/70 mb-6">
                       {selectedTest.description}
                     </p>
 
                     <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center p-4 bg-[#F5F4F5] rounded-lg">
+                      <div className="text-center p-4 bg-[#D9F1F1] rounded-lg">
                         <Clock
                           size={24}
-                          className="mx-auto text-[#C73D43] mb-2"
+                          className="mx-auto text-[#232E2F] mb-2"
                         />
-                        <div className="font-medium text-[#2C3C81]">
+                        <div className="font-medium text-[#232E2F]">
                           Duration
                         </div>
-                        <div className="text-sm text-[#2C3C81]/70">
+                        <div className="text-sm text-[#232E2F]/70">
                           {selectedTest.duration}
                         </div>
                       </div>
-                      <div className="text-center p-4 bg-[#F5F4F5] rounded-lg">
+                      <div className="text-center p-4 bg-[#D9F1F1] rounded-lg">
                         <Users
                           size={24}
-                          className="mx-auto text-[#C73D43] mb-2"
+                          className="mx-auto text-[#232E2F] mb-2"
                         />
-                        <div className="font-medium text-[#2C3C81]">
+                        <div className="font-medium text-[#232E2F]">
                           Students
                         </div>
-                        <div className="text-sm text-[#2C3C81]/70">
+                        <div className="text-sm text-[#232E2F]/70">
                           {selectedTest.students}
                         </div>
                       </div>
-                      <div className="text-center p-4 bg-[#F5F4F5] rounded-lg">
+                      <div className="text-center p-4 bg-[#D9F1F1] rounded-lg">
                         <Star
                           size={24}
-                          className="mx-auto text-[#C73D43] mb-2"
+                          className="mx-auto text-[#232E2F] mb-2"
                         />
-                        <div className="font-medium text-[#2C3C81]">Rating</div>
-                        <div className="text-sm text-[#2C3C81]/70">
+                        <div className="font-medium text-[#232E2F]">Rating</div>
+                        <div className="text-sm text-[#232E2F]/70">
                           {selectedTest.rating}/5
                         </div>
                       </div>
@@ -302,7 +281,7 @@ export default function TestPreparationsPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-bold text-[#2C3C81] mb-4">
+                    <h3 className="text-xl font-bold text-[#232E2F] mb-4">
                       What You'll Learn
                     </h3>
                     <div className="space-y-3 mb-6">
@@ -310,9 +289,9 @@ export default function TestPreparationsPage() {
                         <div key={index} className="flex items-start">
                           <CheckCircle
                             size={20}
-                            className="text-[#C73D43] mr-3 mt-0.5 flex-shrink-0"
+                            className="text-[#232E2F] mr-3 mt-0.5 flex-shrink-0"
                           />
-                          <span className="text-[#2C3C81]/70">{feature}</span>
+                          <span className="text-[#232E2F]/70">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -322,11 +301,11 @@ export default function TestPreparationsPage() {
                 <div className="flex gap-3 mt-6">
                   <Link
                     href={`/test-preparations/${selectedTest.id}`}
-                    className="flex-1 bg-[#C73D43] text-white py-3 rounded-lg hover:bg-[#2C3C81] transition-colors text-center"
+                    className="flex-1 bg-[#232E2F] text-white py-3 rounded-lg hover:bg-[#3A4A4B] transition-colors text-center"
                   >
                     View Full Details
                   </Link>
-                  <button className="flex-1 border border-[#2C3C81] text-[#2C3C81] py-3 rounded-lg hover:bg-[#2C3C81] hover:text-white transition-colors">
+                  <button className="flex-1 border border-[#232E2F] text-[#232E2F] py-3 rounded-lg hover:bg-[#232E2F] hover:text-white transition-colors">
                     <Link href="/contact">Get Consultation</Link>
                   </button>
                 </div>

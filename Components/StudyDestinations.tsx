@@ -13,6 +13,7 @@ interface DestinationItem {
   imagePosition: "left" | "right";
   buttonText: string;
   buttonLink: string;
+  imageAlt?: string;
 }
 
 export default function StudyDestinations() {
@@ -56,6 +57,7 @@ export default function StudyDestinations() {
       imagePosition: "left",
       buttonText: "EXPLORE KOREA PROGRAMS",
       buttonLink: "/south-korea",
+      imageAlt: "South Korea",
     },
     {
       title: "Study in Australia",
@@ -65,6 +67,7 @@ export default function StudyDestinations() {
       imagePosition: "right",
       buttonText: "EXPLORE AUSTRALIA PROGRAMS",
       buttonLink: "/australia",
+      imageAlt: "Australia",
     },
     {
       title: "Study in the UK",
@@ -74,6 +77,7 @@ export default function StudyDestinations() {
       imagePosition: "left",
       buttonText: "EXPLORE UK PROGRAMS",
       buttonLink: "/uk",
+      imageAlt: "United Kingdom",
     },
   ];
 
@@ -115,7 +119,7 @@ export default function StudyDestinations() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4 bg-[#D9F1F1]/90 backdrop-blur px-4 py-2 rounded-md text-sm shadow border border-[#232E2F]/30">
                 <span className="font-semibold text-[#232E2F]">
-                  {destination.title.split(" ")[2]}
+                  {destination.imageAlt}
                 </span>
               </div>
             </div>

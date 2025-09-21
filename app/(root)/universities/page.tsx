@@ -49,11 +49,8 @@ export default function UniversitiesPage() {
   const countries = [
     "all",
     "South Korea",
-    "United States",
     "Australia",
-    "Japan",
     "UK",
-    "Malta",
   ];
 
   const sortOptions = [
@@ -189,9 +186,9 @@ export default function UniversitiesPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen pt-32 bg-gradient-to-br from-[#F5F4F5] via-white to-[#B2ACCE]/20">
+      <div className="min-h-screen pt-32 bg-[#D9F1F1]">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C73D43]"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#232E2F]"></div>
         </div>
       </div>
     );
@@ -199,7 +196,7 @@ export default function UniversitiesPage() {
 
   return (
     <main className="overflow-x-hidden">
-      <div className="w-full min-w-[100vw] min-h-screen pt-52 bg-gradient-to-br from-[#F5F4F5] via-white to-[#B2ACCE]/20">
+      <div className="w-full min-w-[100vw] min-h-screen pt-52 bg-[#D9F1F1]">
         <div className="container mx-auto px-4 sm:px-6 py-8">
           {/* Hero Section */}
           <motion.div
@@ -208,10 +205,10 @@ export default function UniversitiesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2C3C81] mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#232E2F] mb-3 sm:mb-4">
               Discover Top Universities
             </h1>
-            <p className="text-base sm:text-lg text-[#2C3C81]/80 max-w-3xl mx-auto px-2">
+            <p className="text-base sm:text-lg text-[#232E2F]/80 max-w-3xl mx-auto px-2">
               Explore world-class institutions across South Korea, Australia,
               Japan, UK, and Malta
             </p>
@@ -228,7 +225,7 @@ export default function UniversitiesPage() {
               {/* Search Bar */}
               <div className="relative">
                 <Search
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#B2ACCE]"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#232E2F]/50"
                   size={20}
                 />
                 <input
@@ -236,7 +233,7 @@ export default function UniversitiesPage() {
                   placeholder="Search universities..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 sm:py-3 border border-[#232E2F]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#232E2F] focus:border-transparent"
                 />
               </div>
 
@@ -244,13 +241,13 @@ export default function UniversitiesPage() {
               <div className="hidden sm:flex gap-4">
                 <div className="relative flex-1">
                   <Filter
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#B2ACCE]"
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#232E2F]/50"
                     size={20}
                   />
                   <select
                     value={selectedCountry}
                     onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="w-full pl-10 pr-8 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent bg-white"
+                    className="w-full pl-10 pr-8 py-2 sm:py-3 border border-[#232E2F]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#232E2F] focus:border-transparent bg-white"
                   >
                     {countries.map((country) => (
                       <option key={country} value={country}>
@@ -263,7 +260,7 @@ export default function UniversitiesPage() {
                   <select
                     value={sortOption}
                     onChange={(e) => setSortOption(e.target.value)}
-                    className="w-full pl-4 pr-8 py-2 sm:py-3 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent bg-white"
+                    className="w-full pl-4 pr-8 py-2 sm:py-3 border border-[#232E2F]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#232E2F] focus:border-transparent bg-white"
                   >
                     {sortOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -277,7 +274,7 @@ export default function UniversitiesPage() {
               {/* Mobile Filter Button */}
               <button
                 onClick={() => setIsMobileFilterOpen(true)}
-                className="sm:hidden flex items-center justify-center gap-2 bg-[#2C3C81] text-white py-2 rounded-lg"
+                className="sm:hidden flex items-center justify-center gap-2 bg-[#232E2F] text-white py-2 rounded-lg"
               >
                 <Filter size={18} />
                 <span>Filters</span>
@@ -302,24 +299,24 @@ export default function UniversitiesPage() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold text-[#2C3C81]">Filters</h3>
+                  <h3 className="text-xl font-bold text-[#232E2F]">Filters</h3>
                   <button
                     onClick={() => setIsMobileFilterOpen(false)}
                     className="p-1 rounded-full hover:bg-gray-100"
                   >
-                    <X size={24} className="text-[#2C3C81]" />
+                    <X size={24} className="text-[#232E2F]" />
                   </button>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#2C3C81] mb-1">
+                    <label className="block text-sm font-medium text-[#232E2F] mb-1">
                       Country
                     </label>
                     <select
                       value={selectedCountry}
                       onChange={(e) => setSelectedCountry(e.target.value)}
-                      className="w-full p-2 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent bg-white"
+                      className="w-full p-2 border border-[#232E2F]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#232E2F] focus:border-transparent bg-white"
                     >
                       {countries.map((country) => (
                         <option key={country} value={country}>
@@ -330,13 +327,13 @@ export default function UniversitiesPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-[#2C3C81] mb-1">
+                    <label className="block text-sm font-medium text-[#232E2F] mb-1">
                       Sort By
                     </label>
                     <select
                       value={sortOption}
                       onChange={(e) => setSortOption(e.target.value)}
-                      className="w-full p-2 border border-[#B2ACCE]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C73D43] focus:border-transparent bg-white"
+                      className="w-full p-2 border border-[#232E2F]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#232E2F] focus:border-transparent bg-white"
                     >
                       {sortOptions.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -348,7 +345,7 @@ export default function UniversitiesPage() {
 
                   <button
                     onClick={() => setIsMobileFilterOpen(false)}
-                    className="w-full bg-[#C73D43] text-white py-2 rounded-lg mt-4"
+                    className="w-full bg-[#232E2F] text-white py-2 rounded-lg mt-4"
                   >
                     Apply Filters
                   </button>
@@ -388,8 +385,8 @@ export default function UniversitiesPage() {
                     size={18}
                     className={
                       favorites.includes(university.$id)
-                        ? "fill-[#C73D43] text-[#C73D43]"
-                        : "text-[#2C3C81]"
+                        ? "fill-[#232E2F] text-[#232E2F]"
+                        : "text-[#232E2F]"
                     }
                   />
                 </button>
@@ -403,7 +400,7 @@ export default function UniversitiesPage() {
                   className="absolute top-3 right-12 z-10 p-2 bg-white/80 rounded-full hover:bg-white transition-colors"
                   aria-label="Share this university"
                 >
-                  <Share2 size={18} className="text-[#2C3C81]" />
+                  <Share2 size={18} className="text-[#232E2F]" />
                 </button>
 
                 <div
@@ -420,48 +417,48 @@ export default function UniversitiesPage() {
                         "/university-placeholder.jpg";
                     }}
                   />
-                  <div className="absolute top-3 right-3 bg-[#C73D43] text-white px-2 py-1 rounded-full text-xs sm:text-sm font-medium">
+                  <div className="absolute top-3 right-3 bg-[#232E2F] text-white px-2 py-1 rounded-full text-xs sm:text-sm font-medium">
                     {university.country}
                   </div>
                 </div>
 
                 <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-bold text-[#2C3C81] mb-2 group-hover:text-[#C73D43] transition-colors line-clamp-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#232E2F] mb-2 group-hover:text-[#3A4A4B] transition-colors line-clamp-2">
                     {university.name}
                   </h3>
 
                   <div className="space-y-2 mb-3 sm:mb-4">
-                    <div className="flex items-center text-[#2C3C81]/70">
+                    <div className="flex items-center text-[#232E2F]/70">
                       <MapPin
                         size={14}
-                        className="mr-2 text-[#C73D43] flex-shrink-0"
+                        className="mr-2 text-[#232E2F] flex-shrink-0"
                       />
                       <span className="text-xs sm:text-sm truncate">
                         {university.country}
                       </span>
                     </div>
-                    <div className="flex items-center text-[#2C3C81]/70">
+                    <div className="flex items-center text-[#232E2F]/70">
                       <Calendar
                         size={14}
-                        className="mr-2 text-[#C73D43] flex-shrink-0"
+                        className="mr-2 text-[#232E2F] flex-shrink-0"
                       />
                       <span className="text-xs sm:text-sm truncate">
                         {university.intake}
                       </span>
                     </div>
-                    <div className="flex items-center text-[#2C3C81]/70">
+                    <div className="flex items-center text-[#232E2F]/70">
                       <BookOpen
                         size={14}
-                        className="mr-2 text-[#C73D43] flex-shrink-0"
+                        className="mr-2 text-[#232E2F] flex-shrink-0"
                       />
                       <span className="text-xs sm:text-sm truncate">
                         {university.programs}
                       </span>
                     </div>
-                    <div className="flex items-center text-[#2C3C81]/70">
+                    <div className="flex items-center text-[#232E2F]/70">
                       <Star
                         size={14}
-                        className="mr-2 text-[#C73D43] flex-shrink-0"
+                        className="mr-2 text-[#232E2F] flex-shrink-0"
                       />
                       <span className="text-xs sm:text-sm truncate">
                         {university.ranking}
@@ -471,7 +468,7 @@ export default function UniversitiesPage() {
 
                   <button
                     onClick={() => setSelectedUniversity(university)}
-                    className="w-full bg-[#2C3C81] text-white py-2 rounded-lg hover:bg-[#C73D43] transition-colors group flex items-center justify-center text-sm sm:text-base"
+                    className="w-full bg-[#232E2F] text-white py-2 rounded-lg hover:bg-[#3A4A4B] transition-colors group flex items-center justify-center text-sm sm:text-base"
                   >
                     <span>Learn More</span>
                     <ArrowRight
@@ -490,7 +487,7 @@ export default function UniversitiesPage() {
               animate={{ opacity: 1 }}
               className="text-center py-12"
             >
-              <div className="text-[#B2ACCE] text-base sm:text-lg mb-4">
+              <div className="text-[#232E2F]/50 text-base sm:text-lg mb-4">
                 No universities found matching your criteria.
               </div>
               <button
@@ -499,7 +496,7 @@ export default function UniversitiesPage() {
                   setSelectedCountry("all");
                   setSortOption("default");
                 }}
-                className="bg-[#C73D43] text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-[#2C3C81] transition-colors text-sm sm:text-base"
+                className="bg-[#232E2F] text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-[#3A4A4B] transition-colors text-sm sm:text-base"
               >
                 Reset Filters
               </button>
@@ -535,7 +532,7 @@ export default function UniversitiesPage() {
                   />
                   <button
                     onClick={() => setSelectedUniversity(null)}
-                    className="absolute top-3 right-3 bg-white/90 hover:bg-white text-[#2C3C81] rounded-full p-1 sm:p-2 transition-colors"
+                    className="absolute top-3 right-3 bg-white/90 hover:bg-white text-[#232E2F] rounded-full p-1 sm:p-2 transition-colors"
                   >
                     <X size={20} />
                   </button>
@@ -543,7 +540,7 @@ export default function UniversitiesPage() {
 
                 <div className="p-4 sm:p-6">
                   <div className="flex justify-between items-start mb-4">
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#2C3C81]">
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#232E2F]">
                       {selectedUniversity.name}
                     </h2>
                     <div className="flex gap-1 sm:gap-2">
@@ -560,8 +557,8 @@ export default function UniversitiesPage() {
                           size={18}
                           className={
                             favorites.includes(selectedUniversity.$id)
-                              ? "fill-[#C73D43] text-[#C73D43]"
-                              : "text-[#2C3C81]"
+                              ? "fill-[#232E2F] text-[#232E2F]"
+                              : "text-[#232E2F]"
                           }
                         />
                       </button>
@@ -570,7 +567,7 @@ export default function UniversitiesPage() {
                         className="p-1 sm:p-2 hover:bg-gray-100 rounded-full"
                         aria-label="Share this university"
                       >
-                        <Share2 size={18} className="text-[#2C3C81]" />
+                        <Share2 size={18} className="text-[#232E2F]" />
                       </button>
                     </div>
                   </div>
@@ -580,13 +577,13 @@ export default function UniversitiesPage() {
                       <div className="flex items-start">
                         <MapPin
                           size={16}
-                          className="mr-2 mt-1 text-[#C73D43] flex-shrink-0"
+                          className="mr-2 mt-1 text-[#232E2F] flex-shrink-0"
                         />
                         <div>
-                          <div className="font-medium text-sm sm:text-base text-[#2C3C81]">
+                          <div className="font-medium text-sm sm:text-base text-[#232E2F]">
                             Location
                           </div>
-                          <div className="text-xs sm:text-sm text-[#2C3C81]/70">
+                          <div className="text-xs sm:text-sm text-[#232E2F]/70">
                             {selectedUniversity.country}
                           </div>
                         </div>
@@ -594,13 +591,13 @@ export default function UniversitiesPage() {
                       <div className="flex items-start">
                         <Calendar
                           size={16}
-                          className="mr-2 mt-1 text-[#C73D43] flex-shrink-0"
+                          className="mr-2 mt-1 text-[#232E2F] flex-shrink-0"
                         />
                         <div>
-                          <div className="font-medium text-sm sm:text-base text-[#2C3C81]">
+                          <div className="font-medium text-sm sm:text-base text-[#232E2F]">
                             Intake
                           </div>
-                          <div className="text-xs sm:text-sm text-[#2C3C81]/70">
+                          <div className="text-xs sm:text-sm text-[#232E2F]/70">
                             {selectedUniversity.intake}
                           </div>
                         </div>
@@ -609,13 +606,13 @@ export default function UniversitiesPage() {
                         <div className="flex items-start">
                           <BookOpen
                             size={16}
-                            className="mr-2 mt-1 text-[#C73D43] flex-shrink-0"
+                            className="mr-2 mt-1 text-[#232E2F] flex-shrink-0"
                           />
                           <div>
-                            <div className="font-medium text-sm sm:text-base text-[#2C3C81]">
+                            <div className="font-medium text-sm sm:text-base text-[#232E2F]">
                               Tuition Fees
                             </div>
-                            <div className="text-xs sm:text-sm text-[#2C3C81]/70">
+                            <div className="text-xs sm:text-sm text-[#232E2F]/70">
                               {selectedUniversity.tuition}
                             </div>
                           </div>
@@ -627,13 +624,13 @@ export default function UniversitiesPage() {
                       <div className="flex items-start">
                         <BookOpen
                           size={16}
-                          className="mr-2 mt-1 text-[#C73D43] flex-shrink-0"
+                          className="mr-2 mt-1 text-[#232E2F] flex-shrink-0"
                         />
                         <div>
-                          <div className="font-medium text-sm sm:text-base text-[#2C3C81]">
+                          <div className="font-medium text-sm sm:text-base text-[#232E2F]">
                             Programs
                           </div>
-                          <div className="text-xs sm:text-sm text-[#2C3C81]/70">
+                          <div className="text-xs sm:text-sm text-[#232E2F]/70">
                             {selectedUniversity.programs}
                           </div>
                         </div>
@@ -641,13 +638,13 @@ export default function UniversitiesPage() {
                       <div className="flex items-start">
                         <Star
                           size={16}
-                          className="mr-2 mt-1 text-[#C73D43] flex-shrink-0"
+                          className="mr-2 mt-1 text-[#232E2F] flex-shrink-0"
                         />
                         <div>
-                          <div className="font-medium text-sm sm:text-base text-[#2C3C81]">
+                          <div className="font-medium text-sm sm:text-base text-[#232E2F]">
                             Ranking
                           </div>
-                          <div className="text-xs sm:text-sm text-[#2C3C81]/70">
+                          <div className="text-xs sm:text-sm text-[#232E2F]/70">
                             {selectedUniversity.ranking}
                           </div>
                         </div>
@@ -656,13 +653,13 @@ export default function UniversitiesPage() {
                         <div className="flex items-start">
                           <Star
                             size={16}
-                            className="mr-2 mt-1 text-[#C73D43] flex-shrink-0"
+                            className="mr-2 mt-1 text-[#232E2F] flex-shrink-0"
                           />
                           <div>
-                            <div className="font-medium text-sm sm:text-base text-[#2C3C81]">
+                            <div className="font-medium text-sm sm:text-base text-[#232E2F]">
                               Scholarships
                             </div>
-                            <div className="text-xs sm:text-sm text-[#2C3C81]/70">
+                            <div className="text-xs sm:text-sm text-[#232E2F]/70">
                               {selectedUniversity.scholarship}
                             </div>
                           </div>
@@ -673,10 +670,10 @@ export default function UniversitiesPage() {
 
                   {selectedUniversity.description && (
                     <div className="mb-4 sm:mb-6">
-                      <h3 className="font-medium text-sm sm:text-base text-[#2C3C81] mb-2">
+                      <h3 className="font-medium text-sm sm:text-base text-[#232E2F] mb-2">
                         About
                       </h3>
-                      <p className="text-xs sm:text-sm text-[#2C3C81]/70">
+                      <p className="text-xs sm:text-sm text-[#232E2F]/70">
                         {selectedUniversity.description}
                       </p>
                     </div>
@@ -688,14 +685,14 @@ export default function UniversitiesPage() {
                         href={selectedUniversity.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-[#C73D43] text-white py-2 sm:py-3 rounded-lg hover:bg-[#2C3C81] transition-colors text-center text-sm sm:text-base"
+                        className="flex-1 bg-[#232E2F] text-white py-2 sm:py-3 rounded-lg hover:bg-[#3A4A4B] transition-colors text-center text-sm sm:text-base"
                       >
                         Visit Website
                       </a>
                     )}
                     <Link
                       href="/contact"
-                      className="flex-1 border border-[#2C3C81] text-[#2C3C81] py-2 sm:py-3 rounded-lg hover:bg-[#2C3C81] hover:text-white transition-colors text-center text-sm sm:text-base"
+                      className="flex-1 border border-[#232E2F] text-[#232E2F] py-2 sm:py-3 rounded-lg hover:bg-[#232E2F] hover:text-white transition-colors text-center text-sm sm:text-base"
                     >
                       Get Consultation
                     </Link>

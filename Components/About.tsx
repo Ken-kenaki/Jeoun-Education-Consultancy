@@ -183,8 +183,6 @@ export default function AboutPage() {
             </div>
           </div>
         </motion.section>
-
-       
        
       </div>
     </main>

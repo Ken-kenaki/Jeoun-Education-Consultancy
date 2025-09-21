@@ -98,7 +98,7 @@ export default function Admission() {
   ];
 
   return (
-    <main className="overflow-x-hidden mt-40">
+    <main className="overflow-x-hidden mt-38">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-16">
           <h1
@@ -291,7 +291,8 @@ export default function Admission() {
                 className="font-semibold hover:underline"
                 style={{ color: "#232E2F" }}
               >
-                01-5916232
+                +977-9862358543
+
               </a>
             </p>
           </div>
