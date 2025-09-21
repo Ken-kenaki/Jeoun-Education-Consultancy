@@ -82,8 +82,6 @@ export default function Navbar() {
     },
   ];
 
-  // Fetch news events from API
-  // Update the useEffect hook for fetching news
   useEffect(() => {
     const fetchNewsEvents = async () => {
       try {
@@ -91,24 +89,41 @@ export default function Navbar() {
         if (response.ok) {
           const data = await response.json();
           console.log("Fetched news events:", data);
-          setNewsEvents(data);
+
+          // Handle the specific response structure with documents property
+          if (data.documents && Array.isArray(data.documents)) {
+            setNewsEvents(data.documents);
+          } else if (Array.isArray(data)) {
+            setNewsEvents(data);
+          } else if (data.newsEvents && Array.isArray(data.newsEvents)) {
+            setNewsEvents(data.newsEvents);
+          } else if (data.data && Array.isArray(data.data)) {
+            setNewsEvents(data.data);
+          } else {
+            console.error("Unexpected API response structure:", data);
+            setDefaultNews();
+          }
         } else {
           console.error("Failed to fetch news events:", response.status);
+          setDefaultNews();
         }
       } catch (error) {
         console.error("Failed to fetch news events:", error);
-        // Set default news on error
-        setNewsEvents([
-          {
-            id: "default-1",
-            title: "Welcome to Joeun Education Consultancy",
-            type: "news",
-            content: "We help students achieve their study abroad dreams",
-            date: new Date().toISOString(),
-            status: "published",
-          },
-        ]);
+        setDefaultNews();
       }
+    };
+
+    const setDefaultNews = () => {
+      setNewsEvents([
+        {
+          id: "default-1",
+          title: "Welcome to Joeun Education Consultancy",
+          type: "news",
+          content: "We help students achieve their study abroad dreams",
+          date: new Date().toISOString(),
+          status: "published",
+        },
+      ]);
     };
 
     fetchNewsEvents();
@@ -285,7 +300,8 @@ export default function Navbar() {
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="hidden lg:flex bg-[#232E2F] text-[#D9F1F1] py-2 px-4 text-sm fixed w-full z-50 items-center justify-center"
+        className="hidden lg:flex bg-[#232E2F] text-[#D9F1F1] py-2 px-4 text-sm fixed w-full z-60 items-center justify-center"
+        style={{ top: 0 }}
       >
         <div className="container mx-auto flex items-center justify-center relative">
           {newsEvents.length > 0 ? (
@@ -300,18 +316,19 @@ export default function Navbar() {
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   <Link
-                    href={`/news-offer/${newsEvents[currentNewsIndex].id}`}
+                    href="/news-offer"
                     className="hover:text-white cursor-pointer transition-colors truncate"
                     aria-label="Latest news and offers"
                   >
-                    {newsEvents[currentNewsIndex].title}
+                    {newsEvents[currentNewsIndex]?.title ||
+                      "Welcome to Joeun Education Consultancy"}
                   </Link>
                 </motion.div>
               </AnimatePresence>
             </div>
           ) : (
             <div className="flex items-center justify-center gap-4">
-              No Events | Updates Available
+              Welcome to Joeun Education Consultancy
             </div>
           )}
         </div>
@@ -325,7 +342,7 @@ export default function Navbar() {
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="bg-[#eaf8f8] shadow-lg fixed lg:top-[40px] top-0 z-40 w-full"
+        className="bg-[#eaf8f8] shadow-lg fixed lg:top-[40px] top-0 z-30 w-full"
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">

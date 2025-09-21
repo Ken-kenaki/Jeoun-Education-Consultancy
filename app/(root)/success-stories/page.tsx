@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { ArrowRight, X, Star, User, Search } from "lucide-react";
+import { ArrowRight, X, Star, User, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -39,6 +39,8 @@ export default function SuccessStoriesPage(): JSX.Element {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+  const [imageViewerOpen, setImageViewerOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     program: "",
@@ -50,9 +52,9 @@ export default function SuccessStoriesPage(): JSX.Element {
 
   const STORIES_BUCKET = appwriteConfig.buckets.stories;
 
-  const getStoryImageUrl = (imageId?: string) => {
+  const getStoryImageUrl = (imageId?: string, width?: number, height?: number) => {
     if (!imageId) return null;
-    return getImageUrl(imageId, STORIES_BUCKET, 200, 200);
+    return getImageUrl(imageId, STORIES_BUCKET, width || 200, height || 200);
   };
 
   const fetchStories = useCallback(async () => {
@@ -129,7 +131,23 @@ export default function SuccessStoriesPage(): JSX.Element {
     []
   );
 
- 
+  const openStoryModal = (story: Story) => {
+    setSelectedStory(story);
+  };
+
+  const closeStoryModal = () => {
+    setSelectedStory(null);
+  };
+
+  const openImageViewer = (e: React.MouseEvent, story: Story) => {
+    e.stopPropagation(); // Prevent opening the story modal
+    setSelectedStory(story);
+    setImageViewerOpen(true);
+  };
+
+  const closeImageViewer = () => {
+    setImageViewerOpen(false);
+  };
 
   if (loading) {
     return (
@@ -195,10 +213,14 @@ export default function SuccessStoriesPage(): JSX.Element {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col"
+              className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col cursor-pointer"
+              onClick={() => openStoryModal(story)}
             >
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gray-200 flex items-center justify-center">
+                <div 
+                  className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gray-200 flex items-center justify-center"
+                  onClick={(e) => openImageViewer(e, story)}
+                >
                   {story.imageId ? (
                     <img
                       src={getStoryImageUrl(story.imageId) || ""}
@@ -232,7 +254,7 @@ export default function SuccessStoriesPage(): JSX.Element {
                 ))}
               </div>
 
-              <p className="text-[#232E2F]/90 mb-6 flex-grow">
+              <p className="text-[#232E2F]/90 mb-6 flex-grow line-clamp-4">
                 &quot;{story.content}&quot;
               </p>
             </motion.div>
@@ -249,7 +271,7 @@ export default function SuccessStoriesPage(): JSX.Element {
           </div>
         )}
         
-         {/* Add Your Story Button - Update to use Link */}
+        {/* Add Your Story Button - Update to use Link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -271,8 +293,127 @@ export default function SuccessStoriesPage(): JSX.Element {
 
       </div>
 
+      {/* Story Detail Modal */}
+      <AnimatePresence>
+        {selectedStory && !imageViewerOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4"
+            onClick={closeStoryModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center">
+                    <div 
+                      className="w-20 h-20 rounded-full overflow-hidden mr-4 bg-gray-200 flex items-center justify-center cursor-pointer"
+                      onClick={(e) => {
+                        closeStoryModal();
+                        openImageViewer(e, selectedStory);
+                      }}
+                    >
+                      {selectedStory.imageId ? (
+                        <img
+                          src={getStoryImageUrl(selectedStory.imageId, 80, 80) || ""}
+                          alt={selectedStory.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "/placeholder.jpg";
+                          }}
+                        />
+                      ) : (
+                        <User className="w-10 h-10 text-gray-400" />
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-2xl text-[#232E2F]">{selectedStory.name}</h3>
+                      <p className="text-lg text-[#232E2F]/80">{selectedStory.program}</p>
+                      <p className="text-md text-[#232E2F]/60">{selectedStory.university}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={closeStoryModal}
+                    className="text-[#232E2F] hover:text-red-500 transition-colors"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
 
-      
+                <div className="mb-6 flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`w-6 h-6 ${
+                        i < selectedStory.rating
+                          ? "text-[#232E2F] fill-current"
+                          : "text-gray-300"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <p className="text-[#232E2F]/90 text-lg leading-relaxed mb-6">
+                  &quot;{selectedStory.content}&quot;
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Image Viewer Modal */}
+      <AnimatePresence>
+        {imageViewerOpen && selectedStory && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+            onClick={closeImageViewer}
+          >
+            <div className="relative max-w-4xl w-full max-h-full p-4">
+              <button
+                onClick={closeImageViewer}
+                className="absolute top-4 right-4 text-white hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full p-2"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              <div className="flex flex-col items-center">
+                {selectedStory.imageId ? (
+                  <img
+                    src={getStoryImageUrl(selectedStory.imageId, 800, 800) || ""}
+                    alt={selectedStory.name}
+                    className="max-w-full max-h-[70vh] object-contain rounded-lg"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "/placeholder.jpg";
+                    }}
+                  />
+                ) : (
+                  <div className="w-64 h-64 rounded-full bg-gray-200 flex items-center justify-center">
+                    <User className="w-32 h-32 text-gray-400" />
+                  </div>
+                )}
+                
+                <div className="mt-4 text-center text-white">
+                  <h3 className="text-xl font-bold">{selectedStory.name}</h3>
+                  <p className="text-lg">{selectedStory.program}</p>
+                  <p className="text-md">{selectedStory.university}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
